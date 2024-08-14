@@ -16,4 +16,8 @@ SHEET = GSPREAD_CLIENT.open('words')
 words = SHEET.worksheet('unfiltered')
 
 data = words.get_all_values()
-print(data)
+def flatten_sum(data):
+    return sum(data, [])
+
+single_list = flatten_sum(data)
+print(single_list)
