@@ -20,4 +20,7 @@ def flatten_sum(data):
     return sum(data, [])
 
 single_list = flatten_sum(data)
-print(single_list)
+
+single_list.append("zebrazebra")
+print(single_list[-1])
+
