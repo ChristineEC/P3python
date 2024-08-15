@@ -21,8 +21,25 @@ def flatten_sum(data):
 
 single_list = flatten_sum(data)
 
-single_list.append("zebrazebra")
-print(single_list[-1])
+def display_game_title():
+    print("HANGMAN")
+display_game_title()
+
+def display_game_rules:
+    ...
+
+def ask_for_player_name():
+    name = input("Enter you name: \n")
+    print(name)
+    return name
+
+def greet_player_by_name(name):
+    print(f"Hello, {name}! Welcome to Hangman /n")
+
+def ask_for_guess():
+    guess = input("Enter a letter: \n")
+    ...
+
 
 def get_word():
     """
@@ -31,6 +48,7 @@ def get_word():
     word = random.choice(single_list)
     print(word)
     return word
+
 
 def display_underscores(word):
     """
@@ -50,6 +68,9 @@ def main():
     """
     Runs main program
     """
+
+    ask_for_player_name()
+    greet_player(name)
     word = get_word()
     display_underscores(word)
 
