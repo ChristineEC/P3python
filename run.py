@@ -24,3 +24,12 @@ single_list = flatten_sum(data)
 single_list.append("zebrazebra")
 print(single_list[-1])
 
+def get_word():
+    """
+    Get a random word from the list of words,
+    to include only those words with 5 letters or more
+    """
+    word_in_play = random.choice(single_list)
+    print(word_in_play)
+
+get_word()
