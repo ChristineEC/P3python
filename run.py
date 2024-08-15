@@ -26,10 +26,31 @@ print(single_list[-1])
 
 def get_word():
     """
-    Get a random word from the list of words,
-    to include only those words with 5 letters or more
+    Get a random word from the list of words
     """
-    word_in_play = random.choice(single_list)
-    print(word_in_play)
+    word = random.choice(single_list)
+    print(word)
+    return word
 
-get_word()
+def display_underscores(word):
+    """
+    Gets the number of letters in the randomly chosen word
+    and prints out an equal number of underscores to let player know
+    how many letters are in the word.
+    """
+    for letter in word:
+        print("_", end= " ")
+    print("\n")
+
+
+
+  
+
+def main():
+    """
+    Runs main program
+    """
+    word = get_word()
+    display_underscores(word)
+
+main()
