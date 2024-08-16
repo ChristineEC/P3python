@@ -92,6 +92,5 @@ def main():
     ask_for_player_name()
     word = get_word()
     display_underscores(word)
-    ask_for_guess()
-    print("guess as it is at the end {guess}")
+    guess = ask_for_guess()
 main()
