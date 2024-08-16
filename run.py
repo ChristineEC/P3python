@@ -54,19 +54,28 @@ def ask_for_guess():
     """
     Ask player to guess a letter
     """
-    rawguess = input("Enter a letter: \n")
-    guess = rawguess.upper()
-    print(f'you entered this exact character, {guess}, pre-validated')
-    print('Now attempting to validate guess')
-    validate_guess(guess)
+    while True:
+        rawguess = input("Enter a letter: \n")
+        guess = rawguess.upper()
+        print(f'you entered this exact character, {guess}, pre-validated')
+        print('Now attempting to validate guess')
+        if validate_guess(guess):
+            print(f'{guess} is a valid guess')
+            break
+    return guess
 
-def validate_guess(guess):
+
+def validate_guess(typed):
     try:
-        if guess.isalpha():
-             print(f'You guessed {guess}')
-    except ValueError:
-        print('Not a letter. Please try again.')
+        if not typed.isalpha():
+            raise TypeError(
+                f'Guess should be a letter from A to Z. You typed {typed}.'
+            )
+    except TypeError as e:
+        print(f'Invalid guess: {e} Please try again.')
+        return False
 
+    return True
 
 def main():
     """
