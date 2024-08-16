@@ -59,7 +59,9 @@ def ask_for_guess():
     """
     while True:
         guess = input("Enter a letter: \n")
+
         if validate_guess(guess):
+            guess = guess.upper()
             print(f'You guessed {guess}')
             break
     return guess
@@ -91,5 +93,5 @@ def main():
     word = get_word()
     display_underscores(word)
     ask_for_guess()
-    
+    print("guess as it is at the end {guess}")
 main()
