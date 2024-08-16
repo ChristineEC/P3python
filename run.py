@@ -34,9 +34,28 @@ def display_game_rules():
     print("Here are the rules \n")
 
 def ask_for_player_name():
-    name = input("Enter you name: \n")
-    print(f"Hello, {name}! Welcome to Hangman \n")
+    while True:
+        name = input("Please enter your name: \n")
+        if validate_user_name_as_alpha(name):
+            print(f"Hello, {name}! Welcome to Hangman! \n")
+            break
     return name
+
+def validate_user_name_as_alpha(nentry):
+    """
+    Checks whether user has input a name using only
+    letters A-Z. Prompts new entry otherwise.
+    """
+    print('Validating user name as alpha')
+    try:
+        if not nentry.isalpha():
+            raise TypeError(
+                f"Name must consist of letters A-Z only."
+            )
+    except TypeError as e:
+        print(f'Invalid entry: {e} Please try again.')
+        return False
+    return True
 
 def get_word():
     """
@@ -53,9 +72,11 @@ def get_word():
 def display_underscores(string):
     """
     Gets the number of letters in the randomly chosen word
-    and prints out an equal number of underscores to let player know
-    how many letters are in the word.
+    and prints out an equal number of underscores. Tells
+    player the length of the word.
     """
+    word_length = len(string)
+    print(f'The word length is {word_length} letters.')
     for letter in string:
         print("_", end= " ")
     print("\n")
@@ -63,24 +84,24 @@ def display_underscores(string):
 def ask_for_guess():
     """
     Asks player to guess a letter, 
-    changes input to uppercase, calls function
-    to validate input as a letter, and continues to ask
-    for a letter input until a letter is input.
-    Appends the letter to a list of guessed letters
-    and returns the guess.
+    calls function to validate input as a letter, 
+    changes input to capital if a lette, else asks player
+    again for letter input. Then calls function  to validate
+    that guess has not been repeated,
+    and continues to ask for a (new) letter input until 
+    a valid letter is received. Appends the letter 
+    to a set of guessed letters and returns that set.
     """
     global already_guessed
-    print('The global variable is in place')
     while True:
         guess = input("Enter a letter: \n")
         if validate_guess_as_letter(guess):
             guess = guess.upper()
-            print(f'You guessed {guess}')
-            print('Attempting to append guess to set of guessed')
-        if check_already_guessed(guess):
-            print("Good new guess")
+            print(f'You guessed {guess} Ready to check if already guessed.')
+        if guess.isalpha() and check_already_guessed(guess):
+            print(f'You guessed {guess}. Now adding to set of guesses.')
             already_guessed.add(guess)
-            print(already_guessed)
+            print(f'New set from the while loop {already_guessed}')
             break
     return already_guessed
 
@@ -124,7 +145,6 @@ def check_already_guessed(ltr):
     return True
 
 
-
 def main():
     """
     Runs main program
@@ -135,8 +155,19 @@ def main():
     word = get_word()
     display_underscores(word)
     guess = ask_for_guess()
+    guesses = already_guessed
+    print(guesses)
     word_letters = set(word)
     print(word_letters)
-
+    guess = ask_for_guess()
+    guesses = already_guessed
+    print(guesses)
+    word_letters = set(word)
+    print(word_letters)
+    guess = ask_for_guess()
+    guesses = already_guessed
+    print(guesses)
+    word_letters = set(word)
+    print(word_letters)
 
 main()
