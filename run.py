@@ -25,7 +25,7 @@ def flatten_sum(data):
     return sum(data, [])
 
 single_list = flatten_sum(data)
-already_guessed = set()
+already_guessed = set() #Global variable
 
 def display_game_title():
     print("HANGMAN")
@@ -34,6 +34,11 @@ def display_game_rules():
     print("Here are the rules \n")
 
 def ask_for_player_name():
+    """
+    Asks player to input name. Validates
+    that it is alpha only, else prompts
+    for alpha-only name.
+    """
     while True:
         name = input("Please enter your name: \n")
         if validate_user_name_as_alpha(name):
@@ -44,7 +49,7 @@ def ask_for_player_name():
 def validate_user_name_as_alpha(nentry):
     """
     Checks whether user has input a name using only
-    letters A-Z. Prompts new entry otherwise.
+    letters A-Z. Raises error if not.
     """
     print('Validating user name as alpha')
     try:
@@ -84,13 +89,13 @@ def display_underscores(string):
 def ask_for_guess():
     """
     Asks player to guess a letter, 
-    calls function to validate input as a letter, 
-    changes input to capital if a lette, else asks player
-    again for letter input. Then calls function  to validate
-    that guess has not been repeated,
-    and continues to ask for a (new) letter input until 
-    a valid letter is received. Appends the letter 
-    to a set of guessed letters and returns that set.
+    calls function to validate input as letter, 
+    changes it to upper if so, else asks player
+    again for letter input. Calls function to validate
+    that guess has not been repeated, and continues to 
+    ask for a (new) letter input until a valid letter
+    is received. Appends the valid guess to  set of 
+    guessed letters and returns that set.
     """
     global already_guessed
     while True:
@@ -131,18 +136,11 @@ def check_already_guessed(ltr):
         return False
     return True
 
-def check_already_guessed(ltr):
-    try:
-        if ltr in already_guessed:
-            raise ValueError(
-                f'You already guessed {ltr}. Try again.'
-            )
-    except ValueError as e:
-        print({e})
-        return False
-    return True
-
 def add_to_set_of_guesses(newguess):
+    """ 
+    Appends the valid guess to set of 
+    guessed letters and returns the increased set.
+    """
     already_guessed.add(newguess)
     print(f'New set from the while loop {already_guessed}')
     return already_guessed
