@@ -99,11 +99,9 @@ def ask_for_guess():
             guess = guess.upper()
             print(f'You guessed {guess} Ready to check if already guessed.')
         if guess.isalpha() and check_already_guessed(guess):
-            print(f'You guessed {guess}. Now adding to set of guesses.')
-            already_guessed.add(guess)
-            print(f'New set from the while loop {already_guessed}')
+            print(f'You guessed {guess}.')
             break
-    return already_guessed
+    return guess
 
 def validate_guess_as_letter(typed):
     """
@@ -144,6 +142,12 @@ def check_already_guessed(ltr):
         return False
     return True
 
+def add_to_set_of_guesses(newguess):
+    already_guessed.add(newguess)
+    print(f'New set from the while loop {already_guessed}')
+    return already_guessed
+
+#def check_guess_status():
 
 def main():
     """
@@ -155,19 +159,11 @@ def main():
     word = get_word()
     display_underscores(word)
     guess = ask_for_guess()
-    guesses = already_guessed
-    print(guesses)
+    print(guess)
+    already_guessed = add_to_set_of_guesses(guess)
+    print(f"These are the letters you've guessed so far: {already_guessed}")
     word_letters = set(word)
     print(word_letters)
-    guess = ask_for_guess()
-    guesses = already_guessed
-    print(guesses)
-    word_letters = set(word)
-    print(word_letters)
-    guess = ask_for_guess()
-    guesses = already_guessed
-    print(guesses)
-    word_letters = set(word)
-    print(word_letters)
+
 
 main()
