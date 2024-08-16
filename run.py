@@ -52,29 +52,33 @@ def display_underscores(word):
 
 def ask_for_guess():
     """
-    Ask player to guess a letter
+    Asks player to guess a letter, 
+    changes input to uppercase, calls function
+    to validate input as a letter, and continues to ask
+    for a letter input until a letter is input.
     """
     while True:
-        rawguess = input("Enter a letter: \n")
-        guess = rawguess.upper()
-        print(f'you entered this exact character, {guess}, pre-validated')
-        print('Now attempting to validate guess')
+        guess = input("Enter a letter: \n")
         if validate_guess(guess):
-            print(f'{guess} is a valid guess')
+            print(f'You guessed {guess}')
             break
     return guess
 
 
 def validate_guess(typed):
+    """
+    Checks whether user has input a letter. If not,
+    raises an error telling the user their input
+    is invalid and asking for a letter input.
+    """
     try:
         if not typed.isalpha():
             raise TypeError(
-                f'Guess should be a letter from A to Z. You typed {typed}.'
+                f'Guess should be a letter. You typed {typed}.'
             )
     except TypeError as e:
         print(f'Invalid guess: {e} Please try again.')
         return False
-
     return True
 
 def main():
