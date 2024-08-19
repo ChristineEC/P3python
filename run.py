@@ -145,14 +145,14 @@ def check_already_guessed(ltr):
         return False
     return True
 
-#def add_to_set_of_guesses(newguess):
+def add_to_set_of_guesses(newguess):
     """ 
     Appends the valid guess to set of 
     guessed letters and returns the increased set.
     """
-    #already_guessed.add(newguess)
-    #print(f'New set from the while loop {already_guessed}')
-    #return already_guessed
+    already_guessed.add(newguess)
+    print(f'New set from the while loop {already_guessed}')
+    return already_guessed
 
 #def check_guess_status():
 
@@ -170,8 +170,8 @@ def main():
     #display_gallows()
     display_underscores(word)
     guess = ask_for_guess()
-    #print(guess)
-    #already_guessed = add_to_set_of_guesses(guess)
+    print(guess)
+    already_guessed = add_to_set_of_guesses(guess)
     print(f"These are the letters you've guessed so far: {already_guessed}")
     word_letters = set(word)
     print(word_letters)
