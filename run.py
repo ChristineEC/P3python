@@ -151,8 +151,10 @@ def add_to_set_of_guesses(newguess):
     guessed letters and returns the increased set.
     """
     already_guessed.add(newguess)
+    #sort(already-guessed)
     print(f'New set from the while loop {already_guessed}')
-    return already_guessed
+    
+    return sorted(already_guessed)
 
 #def check_guess_status():
 
@@ -175,7 +177,13 @@ def main():
     print(f"These are the letters you've guessed so far: {already_guessed}")
     word_letters = set(word)
     print(word_letters)
-    
-    
+    guess = ask_for_guess()
+    print(guess)
+    already_guessed = add_to_set_of_guesses(guess)
+    print(f"These are the letters you've guessed so far: {already_guessed}")
+    guess = ask_for_guess()
+    print(guess)
+    already_guessed = add_to_set_of_guesses(guess)
+    print(f"These are the letters you've guessed so far: {already_guessed}")
 
 main()
