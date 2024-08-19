@@ -133,10 +133,10 @@ def check_already_guessed(ltr):
     global already_guessed
     print("Checking to see if already guessed")
 
-    """
-    for testing purposes only next line
-    """
-    already_guessed = {'A', 'B'}
+    #"""
+    #for testing purposes only next line
+    #"""
+    #already_guessed = {'A', 'B'}
     try:
         if ltr in already_guessed:
             raise ValueError('You already guessed {ltr}.')
@@ -170,7 +170,7 @@ def main():
     #display_gallows()
     display_underscores(word)
     guess = ask_for_guess()
-    print(guess)
+    #print(guess)
     #already_guessed = add_to_set_of_guesses(guess)
     print(f"These are the letters you've guessed so far: {already_guessed}")
     word_letters = set(word)
