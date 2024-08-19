@@ -149,33 +149,64 @@ def add_to_set_of_guesses(newguess):
     """
     sort the set of guesses for display in terminal
     """
-    print(f'New set of guesses {sorted(already_guessed)}')
+    print(f'New set of guesses {already_guessed}')
 
-    return (already_guessed)
-    print(f'{already_guessed}')
+    return already_guessed
+    print(f'sorted({already_guessed})')
 
-#def check_guess_status():
-    #if guess
+def compare_guess(ltr):
+    global word_letters
+    global already_guessed
 
+    print('Checking to see if the guess is in the word.')
+    if ltr in word_letters:
+        word_letters.remove(ltr)
+        print(f'Good guess! {ltr} is in the word.')
+        """ 
+        Need funtion to display correct guesses
+        """
+    else:
+        print(f"{ltr} isn't in the word.")
+        #already_guessed.add(ltr)
+        """
+        Need function to change hangman graphic
+        and decrease player's remaining chances.
+        Inform player of remaining chances.
+        Move function to add to set of guesses into
+        this function"
+        """
 
-already_guessed = set()
-display_game_title()
-display_game_rules()
-ask_for_player_name()
 
 def main():
-    """
-    Runs main program
-    """
     word = get_word()
-    word_letters = set(word)
+    word_letters = set(word) 
+    display_game_title()
+    display_game_rules()
+    ask_for_player_name()
     print(word_letters)
     #display_gallows()
     display_underscores(word)
+    already_guessed = set()
+
+    """
+    Runs main loop
+    """
+    
     guess = ask_for_guess()
-    print(guess)
     already_guessed = add_to_set_of_guesses(guess)
     print(f"These are the letters you've guessed so far: {already_guessed}")
+    compare_guess(guess)
+    print(f' Word letters have been decreased to {word_letters} \n')
+    guess = ask_for_guess()
+    already_guessed = add_to_set_of_guesses(guess)
+    print(f"These are the letters you've guessed so far: {already_guessed}")
+    compare_guess(guess)
+    print(f' Word letters have been decreased to {word_letters} \n')
+    guess = ask_for_guess()
+    already_guessed = add_to_set_of_guesses(guess)
+    print(f"These are the letters you've guessed so far: {already_guessed}")
+    compare_guess(guess)
+    print(f' Word letters have been decreased to {word_letters} \n')
 
 
 main()
