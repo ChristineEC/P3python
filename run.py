@@ -154,26 +154,34 @@ def add_to_set_of_guesses(newguess):
     return already_guessed
     print(f'sorted({already_guessed})')
 
+
+"""
 def compare_guess(ltr):
-    global word_letters
-    global already_guessed
+    #global already_guessed
 
     print('Checking to see if the guess is in the word.')
+
     if ltr in word_letters:
         word_letters.remove(ltr)
         print(f'Good guess! {ltr} is in the word.')
         """ 
+        """
         Need funtion to display correct guesses
         """
+        """
+
     else:
         print(f"{ltr} isn't in the word.")
-        #already_guessed.add(ltr)
+        already_guessed.add(ltr)
+        print(f'list.sorted({already_guessed})')
+        """
         """
         Need function to change hangman graphic
         and decrease player's remaining chances.
         Inform player of remaining chances.
         Move function to add to set of guesses into
         this function"
+
         """
 
 
