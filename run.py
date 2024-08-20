@@ -121,10 +121,10 @@ def validate_guess(typedin):
     try:
         if not typedin in alphabet:
             print ('Entry not in alphabet.')
-            raise SyntaxError(
+            raise TypeError(
                 f'Guess should be a single letter. You typed {typedin}.'
             )
-    except (SyntaxError) as e:
+    except (TypeError) as e:
         print(f'Invalid guess: {e} Please try again.') 
         return False
     return True
