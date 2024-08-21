@@ -60,7 +60,7 @@ def get_word():
     global words_list
     word = random.choice(words_list)
     while " " in word or "-" in word or len(word) < 4:
-        word = random.choice(word_list)
+        word = random.choice(words_list)
     word = word.upper()
     print(f'Valid word generated and changed to uppercase: {word} \n')
     return word
@@ -144,15 +144,19 @@ def start_game():
             print(f'Good guess! {guess} is in the word. \n')
             word_letters.remove(guess)
             print(f'These are your guesses so far: {already_guessed} \n')
-            print(f'FOR ME: letters remaining in {word_letters} in play \n')
+            print(f'FOR ME: {len(word_letters)} word_letters remaining \n')
             
         else:
             lives -= 1
             print(f"Too bad. {guess} isn't in the word. \n")
             print(f'These are your guesses so far: {already_guessed} \n')
             #print(letter for letter in word else '_' for letter)
+    
+    if lives > 0 and len(word_letters) == 0:
+        print("Congratulations! You won!")
         
-
+    if lives == 0 and len(word_letters) > 0:
+        print("Oh, no! You've been hung! Better luck next time.")
         """
         Need function to change hangman graphic
         and decrease player's remaining chances.
