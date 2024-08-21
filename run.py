@@ -143,7 +143,6 @@ def start_game():
     print(word)
     lives = 6
     word_letters = set(word)
-    print("Ready to use the valid letter to play")
     while lives > 0 and len(word_letters) > 0:
         display_underscores(word)
         guess = ask_for_guess()
