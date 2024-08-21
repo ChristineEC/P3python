@@ -3,7 +3,8 @@ import gspread
 import string
 from google.oauth2.service_account import Credentials
 
-SCOPE = [
+
+
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
     "https://www.googleapis.com/auth/drive"
@@ -13,10 +14,12 @@ CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('words')
-
 words = SHEET.worksheet('unfiltered')
-
 data = words.get_all_values()
+
+already_guessed = set()             #global variable
+single_list = flatten_sum(data)     #Global variable
+
 def flatten_sum(data):                    #make sure to credit this line
     """
     Changes the list of lists (each containing
@@ -25,11 +28,8 @@ def flatten_sum(data):                    #make sure to credit this line
     """
     return sum(data, [])
 
-single_list = flatten_sum(data)            #Global variable
-
 def display_intro():
     print("HANGMAN")
-    print(" ")
     print("""RULES\nPlayer's objective is to guess 
         all letters in a word of a given length. 
         For each wrong letter guessed, a new body 
@@ -78,6 +78,8 @@ def get_word():
 
     return word
 
+#def display_hangman()
+
 def display_underscores(string):
     """
     Gets the number of letters in the randomly chosen word
@@ -94,24 +96,22 @@ def ask_for_guess():
     """
     Asks player to guess a letter. Call function 
     to validate input as a single letter
-    else raises relevant error and asks player
-    again for letter input. Calls function to validate
-    that guess has not been repeated, and continues to 
-    ask for a (new) letter input until a valid letter
-    is received. Appends the valid guess to  set of 
-    guessed letters and returns that set.
+    and continues to ask for letter input.
+    Returns valid form.
     """
-    #global already_guessed
-
+    global already_guessed  
     while True:
         guess = input("Enter a letter: \n").upper()
-        if validate_guess(guess):
-            print('Guess is of valid form.')
-            if check_already_guessed(guess):
-                print(f'{guess} has not been guessed')
-                print(f'You guessed {guess}')
-                break
+        if not validate_guess(guess):
+            print('Guess is of invalid form.')
+            if not validate_guess(guess) or not check_if_already_guessed(guess):
+                print(f'{guess} has already been guessed. Try again')
+                return False
+        return True
+    
     return guess
+
+print(f'{guess} from the while loop')
 
 def validate_guess(typedin):
     """
@@ -132,87 +132,70 @@ def validate_guess(typedin):
         return False
     return True
 
-def check_already_guessed(ltr):
+def check_if_already_guessed(ltr):
     global already_guessed
     print("Checking to see if already guessed")
     try:
         if ltr in already_guessed:
-            raise ValueError('You already guessed {ltr}.')
+            raise ValueError(f'You already guessed {ltr}.')
     except ValueError as e:
         print(f'{e} Try a different guess.')
         return False
     return True
 
-def add_to_set_of_guesses(newguess):
-    """ 
-    Appends the valid guess to set of 
-    guessed letters and returns the increased set.
-    """
-    already_guessed.add(newguess)
-    """
-    sort the set of guesses for display in terminal
-    """
-    print(f'New set of guesses {already_guessed}')
+def play_valid_guess(goodletter):
+    word = get_word()
+    print(word)
+    lives = 6
+    word_letters = set(word)
+    print("Ready to use the valid letter to play")
+    
+    while lives > 0 and len(word_letters) > 0:
 
-    return already_guessed
-    print(f'sorted({already_guessed})')
+        if goodletter in word_letters:
+            print(f'Good guess! {goodletter} is in the word.')
+            word_letters.remove(goodletter)
+            print(f'These are your guesses so far: {already_guessed} \n')
+            print(f'FOR ME: letters remaining in {word_letters} in play \n')
+            #print(letter for letter in word else '_' for letter)
+        else:
+            lives -= 1
+            print(f"Too bad. {ltr} isn't in the word.")
+            print(f'These are your guesses so far: {already_guessed} \n')
+            #print(letter for letter in word else '_' for letter)
+        
 
-
-"""
-def compare_guess(ltr):
-    #global already_guessed
-
-    print('Checking to see if the guess is in the word.')
-
-    if ltr in word_letters:
-        word_letters.remove(ltr)
-        print(f'Good guess! {ltr} is in the word.')
-
-        Need funtion to display correct guesses
-
-    else:
-        print(f"{ltr} isn't in the word.")
-        already_guessed.add(ltr)
-        print(f'list.sorted({already_guessed})')
-
+        """
         Need function to change hangman graphic
         and decrease player's remaining chances.
         Inform player of remaining chances.
         Move function to add to set of guesses into
         this function"
+        """
+def prelims():
 
-"""
-
-
-def main():
-    word = get_word()
-    word_letters = set(word) 
-    display_intro()
-    ask_for_player_name()
-    print(word_letters)
-    #display_gallows()
-    display_underscores(word)
-    already_guessed = set()
 
     """
     Runs main loop
     """
+def main(): 
+    display_intro()
+    ask_for_player_name()
+    #display_gallows()
+    display_underscores(word) 
+    guess = ask_for_guess()
+    print(f"FROM MAIN - These are the letters you've guessed so far: {already_guessed}")
+    play_valid_guess(guess)
+    print(f' Word letters have been decreased to {word_letters} \n')
+    #already_guessed = add_to_set_of_guesses(guess)
+    print(f"These are the letters you've guessed so far: {already_guessed}")
+    compare_guess(guess)
     
     guess = ask_for_guess()
     already_guessed = add_to_set_of_guesses(guess)
     print(f"These are the letters you've guessed so far: {already_guessed}")
     compare_guess(guess)
     print(f' Word letters have been decreased to {word_letters} \n')
-    guess = ask_for_guess()
-    already_guessed = add_to_set_of_guesses(guess)
-    print(f"These are the letters you've guessed so far: {already_guessed}")
-    compare_guess(guess)
-    print(f' Word letters have been decreased to {word_letters} \n')
-    guess = ask_for_guess()
-    already_guessed = add_to_set_of_guesses(guess)
-    print(f"These are the letters you've guessed so far: {already_guessed}")
-    compare_guess(guess)
-    print(f' Word letters have been decreased to {word_letters} \n')
 
-
+prelims()
 main()
