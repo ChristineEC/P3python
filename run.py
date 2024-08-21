@@ -30,11 +30,12 @@ def flatten_sum(data):                    #make sure to credit this line
 
 def display_intro():
     print("HANGMAN")
+    print('-------')
     print("""RULES\nPlayer's objective is to guess 
         all letters in a word of a given length. 
         For each wrong letter guessed, a new body 
         part appears under the gallows. Player must 
-        guess all letters before the whole body 
+        guess all letters before the whole body
         is hung.""")
 
 def ask_for_player_name():
