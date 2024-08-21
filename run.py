@@ -17,7 +17,7 @@ SHEET = GSPREAD_CLIENT.open('words')
 words = SHEET.worksheet('unfiltered')
 
 data = words.get_all_values()
-def flatten_sum(data):                               #make sure to credit this line
+def flatten_sum(data):                    #make sure to credit this line
     """
     Changes the list of lists (each containing
     a single word) obtained from google sheet
@@ -25,14 +25,17 @@ def flatten_sum(data):                               #make sure to credit this l
     """
     return sum(data, [])
 
-single_list = flatten_sum(data)                   #Global variable
-already_guessed = set()                           #Global variable
+single_list = flatten_sum(data)            #Global variable
 
-def display_game_title():
+def display_intro():
     print("HANGMAN")
-
-def display_game_rules():
-    print("Here are the rules \n")
+    print(" ")
+    print("""RULES\nPlayer's objective is to guess 
+        all letters in a word of a given length. 
+        For each wrong letter guessed, a new body 
+        part appears under the gallows. Player must 
+        guess all letters before the whole body 
+        is hung.""")
 
 def ask_for_player_name():
     """
@@ -164,32 +167,27 @@ def compare_guess(ltr):
     if ltr in word_letters:
         word_letters.remove(ltr)
         print(f'Good guess! {ltr} is in the word.')
-        """ 
-        """
+
         Need funtion to display correct guesses
-        """
-        """
 
     else:
         print(f"{ltr} isn't in the word.")
         already_guessed.add(ltr)
         print(f'list.sorted({already_guessed})')
-        """
-        """
+
         Need function to change hangman graphic
         and decrease player's remaining chances.
         Inform player of remaining chances.
         Move function to add to set of guesses into
         this function"
 
-        """
+"""
 
 
 def main():
     word = get_word()
     word_letters = set(word) 
-    display_game_title()
-    display_game_rules()
+    display_intro()
     ask_for_player_name()
     print(word_letters)
     #display_gallows()
