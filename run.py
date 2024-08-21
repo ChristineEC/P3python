@@ -41,8 +41,8 @@ def display_intro():
 def ask_for_player_name():
     """
     Asks player to input name. Validates
-    that it is alpha only, else prompts
-    for alpha-only name.
+    that it is alpha only and greets player, 
+    else prompts for alpha-only name.
     """
     while True:
         name = input("Please enter your name: \n")
