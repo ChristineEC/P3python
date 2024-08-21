@@ -22,12 +22,7 @@ already_guessed = set()             #global variable
 def display_intro():
     print('HANGMAN')
     print('-------')
-    print("""RULES\nPlayer's objective is to guess 
-        all letters in a word of a given length. 
-        For each wrong letter guessed, a new body 
-        part appears under the gallows. Player must 
-        guess all letters before the whole body
-        is hung.""")
+    print("""RULES\nGuess all of the letters in a word before you're hung.""")
 
 def ask_for_player_name():
     """
@@ -147,14 +142,14 @@ def start_game():
         display_underscores(word)
         guess = ask_for_guess()
         if guess in word_letters:
-            print(f'Good guess! {guess} is in the word.')
+            print(f'Good guess! {guess} is in the word. \n')
             word_letters.remove(guess)
             print(f'These are your guesses so far: {already_guessed} \n')
             print(f'FOR ME: letters remaining in {word_letters} in play \n')
             
         else:
             lives -= 1
-            print(f"Too bad. {guess} isn't in the word.")
+            print(f"Too bad. {guess} isn't in the word. \n")
             print(f'These are your guesses so far: {already_guessed} \n')
             #print(letter for letter in word else '_' for letter)
         
