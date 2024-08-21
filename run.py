@@ -54,15 +54,15 @@ def validate_user_name_as_alpha(nentry):
 
 def get_word():
     """
-    Get a random word from the list of words
-    and make it uppercase
+    Gets a random word from the list of words and make it uppercase,
+    ensuring word has no spaces or hyphens and is 4 or more letters length.
     """
     global words_list
     word = random.choice(words_list)
     while " " in word or "-" in word or len(word) < 4:
         word = random.choice(words_list)
     word = word.upper()
-    print(f'Valid word generated and changed to uppercase: {word} \n')
+    print(f'The word is: {word} \n')
     return word
 
 #def display_hangman()
@@ -99,16 +99,14 @@ def ask_for_guess():
             print(f'{guess} has already been guessed. Try again This is from inside the ask-for-guess function')
             continue
         already_guessed.add(guess)
-        print(f'The {guess}, {guess} is about to be returned from the ask loop')
+        print(f'The guess {guess} is about to be returned from the ask loop')
         return guess
 
 def validate_guess(typedin):
     """
-    Checks whether user has input a single letter. 
-    If not, raises the relevant error and continues
-    to ask for valid input until received.
+    Checks whether user has input a single letter. If not, raises the relevant error 
+    and continues to ask for valid input until received.
     """
-    print('Validating that the guess is a single letter')
     alphabet = set(string.ascii_uppercase)
     try:
         if not typedin in alphabet:
@@ -154,7 +152,7 @@ def start_game():
     
     if lives > 0 and len(word_letters) == 0:
         print("Congratulations! You won!")
-        
+
     if lives == 0 and len(word_letters) > 0:
         print("Oh, no! You've been hung! Better luck next time.")
         """
