@@ -20,7 +20,6 @@ data = words.get_all_values()
 words_list = sum(data, [])          # words_list is global var
 already_guessed = set()             # global variable
 width = os.get_terminal_size().columns
-# clear = lambda:os.system('cls')
 
 
 def clear():                      # see credits in readme file
@@ -120,7 +119,7 @@ def ask_for_guess():
     global already_guessed
     while True:
         guess = input("Enter a letter: \n").upper()
-        if not validate_guess(guess):
+        if not validate_ltrinput(guess):
             continue
         if check_if_already_guessed(guess):
             continue
@@ -128,7 +127,7 @@ def ask_for_guess():
         return guess
 
 
-def validate_guess(typedin):
+def validate_ltrinput(typedin):
     """
     Checks whether user has input a single letter, else
     raises the relevant error and continues to ask
@@ -158,6 +157,7 @@ def check_if_already_guessed(ltr):
         return True
 
 
+
 def start_game():
     word = get_word()
     lives = 6
@@ -172,7 +172,6 @@ def start_game():
                 guesses_list = list(already_guessed)
                 guesses_list.sort()
                 guesses = ' '.join(guesses_list)
-                print(guesses)
                 print(f'These are your guesses so far: {guesses} \n')
         else:
             lives -= 1
@@ -192,7 +191,14 @@ def start_game():
         print('\nCongratulations! You won!\n')
         print(gallows[-1])
     if lives == 0 and len(word_letters) > 0:
-        print(f"Game over. The word was {word}. Better luck next time.")
+        print(f"Game over. The word was {word}. Better luck next time!")
+    if lives == 0 or len(word_letters) == 0:
+        print('Do you want to play again?')
+        newgame = input('Enter Y for yes or N for no: \n').upper()
+        
+        if validate_ltrinput(newgame):
+            print('The newgame function is partially set up')
+
 
 
 def main():
