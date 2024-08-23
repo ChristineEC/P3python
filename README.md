@@ -34,4 +34,6 @@ Happy coding!
 
 ### Credits
 
+I learned the code for centering text in the terminal from [W3Schools](https://www.w3schools.com/python/trypython.asp?filename=demo_ref_string_center2).
+
 I got the idea to us an os method to get the width of the player's terminal from Marko's hangman game in GitHub, which he so kindly shared with me while I was developing this game.
