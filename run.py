@@ -104,7 +104,6 @@ def validate_guess(typedin):
     alphabet = set(string.ascii_uppercase)
     try:
         if not typedin in alphabet:
-            print ('Entry not in alphabet.')
             raise TypeError(
                 f'Guess should be a single letter. You typed {typedin}.'
             )
@@ -115,7 +114,6 @@ def validate_guess(typedin):
 
 def check_if_already_guessed(ltr):
     global already_guessed
-    print("Checking to see if already guessed")
     try:
         if ltr in already_guessed:
             raise ValueError(f'You already guessed {ltr}.')
@@ -140,7 +138,9 @@ def start_game():
         else:
             lives -= 1
             print(f"Too bad. {guess} isn't in the word. \n")
-            print(f'These are your guesses so far: {already_guessed} \n')
+            if lives > 0:
+                print(f"You have {lives} wrong guess(es) left before you're hung.")
+                print(f'These are your guesses so far: {already_guessed}')
     
     if lives > 0 and len(word_letters) == 0:
         print("Congratulations! You won!")
