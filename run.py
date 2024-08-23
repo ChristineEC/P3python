@@ -151,7 +151,11 @@ def start_game():
             print(f'Good guess! {guess} is in the word. \n')
             word_letters.remove(guess)
             if len(word_letters) > 0:
-                print(f'These are your guesses so far: {already_guessed} \n')
+                guesses_list = list(already_guessed)
+                guesses_list.sort()
+                guesses = ' '.join(guesses_list)
+                print(guesses)
+                print(f'These are your guesses so far: {guesses} \n')
             
         else:
             lives -= 1
@@ -159,7 +163,10 @@ def start_game():
             print(gallows[lives])
             if lives > 0:
                 print(f"You have {lives} wrong guess(es) left before you're hung.\n")
-                print(f'These are your guesses so far: {already_guessed}')
+                guesses_list = list(already_guessed)
+                guesses_list.sort()
+                guesses = ' '.join(guesses_list)
+                print(f'These are your guesses so far: {guesses} \n')
     
     if lives > 0 and len(word_letters) == 0:
         for letter in word:

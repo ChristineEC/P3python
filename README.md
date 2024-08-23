@@ -27,6 +27,14 @@ The deployment terminal is set to 80 columns by 24 rows. That means that each li
 
 Happy coding!
 
+### Development
+
+
+
+#### Bugs
+
+The empty underscores and the text telling the player how many letters were in the word (i.e., length) kept appearing when it was no longer needed. I recoded so that the terminal would clear that text and not bring it up again after the number of guesses was greater than zero.
+
 
 ### Credits
 
