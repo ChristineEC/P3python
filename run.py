@@ -156,6 +156,22 @@ def check_if_already_guessed(ltr):
         print(f'{e} Try a different guess.')
         return True
 
+def validate_yesorno(answer):
+    """
+    Checks whether user has input 'Y' or 'y' for 'yes'
+    or 'N' or 'n' for 'no', else raises an error and
+    continues to ask for valid input until received.
+    """
+    alphabet = set(string.ascii_uppercase)
+    try:
+        if answer not in alphabet or answer not in ('n', 'N', 'y', 'Y'):
+            raise TypeError(
+                f'Please type Y for yes or N for no. You typed {answer}.'
+            )
+    except (TypeError) as e:
+        print(f'Invalid answer: {e} Please try again.')
+        return False
+    return True
 
 
 def start_game():
@@ -194,10 +210,22 @@ def start_game():
         print(f"Game over. The word was {word}. Better luck next time!")
     if lives == 0 or len(word_letters) == 0:
         print('Do you want to play again?')
-        newgame = input('Enter Y for yes or N for no: \n').upper()
-        
-        if validate_ltrinput(newgame):
-            print('The newgame function is partially set up')
+
+        while True:
+            newgame = input('Enter Y for yes or N for no: \n').upper()
+            if not validate_yesorno(newgame):
+                return True
+            print(newgame)
+            print('we have come this far')
+            return newgame
+
+        if newgame == 'Y':
+            print('player chose to play again')
+            print("great! let's play again!")
+            start_game()
+        if newgame == 'N':
+            print('Thanks for playing!')
+
 
 
 
