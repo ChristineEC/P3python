@@ -26,9 +26,8 @@ def display_intro():
 
 def ask_for_player_name():
     """
-    Asks player to input name. Validates
-    that it is alpha only and greets player, 
-    else prompts for alpha-only name.
+    Asks player to input name. Calls function to validates that name 
+    is alpha only and greets player, else prompts for valid entry.
     """
     while True:
         name = input('Please enter your name: \n')
@@ -39,8 +38,9 @@ def ask_for_player_name():
 
 def validate_user_name_as_alpha(nentry):
     """
-    Checks whether user has input a name using only
-    letters A-Z. Raises error if not.
+    Checks whether user has input a name using only letters A-Z. 
+    If not, raises error, informs player of reasons, invites
+    player to try again.
     """
     try:
         if not nentry.isalpha():
@@ -55,7 +55,7 @@ def validate_user_name_as_alpha(nentry):
 def get_word():
     """
     Gets a random word from the list of words and make it uppercase,
-    ensuring word has no spaces or hyphens and is 4 or more letters length.
+    ensuring word has no spaces or hyphens and is 4 or more letters in length.
     """
     global words_list
     word = random.choice(words_list)
@@ -69,9 +69,8 @@ def get_word():
 
 def display_underscores(word):
     """
-    Gets the number of letters in the randomly chosen word
-    and prints out an equal number of underscores. Tells
-    player the length of the word.
+    Gets the number of letters in the randomly chosen word, prints out 
+    an equal number of underscores. Tells player the length of the word.
     """
     global already_guessed
     word_length = len(word)
@@ -84,22 +83,17 @@ def display_underscores(word):
 
 def ask_for_guess():
     """
-    Asks player to guess a letter. Calls function 
-    to validate input as a single letter
-    and continues to ask for letter input.
-    Returns valid form.
+    Asks player to guess a letter. Calls functions to validate input as a new single letter
+    and continues to ask for a new letter input. Returns a valid guess.
     """
     global already_guessed  
     while True:
         guess = input("Enter a letter: \n").upper()
         if not validate_guess(guess):
-            print('Guess not validated. Printing from inside the ask-for-guess function.')
             continue
         if check_if_already_guessed(guess):
-            print(f'{guess} has already been guessed. Try again This is from inside the ask-for-guess function')
             continue
         already_guessed.add(guess)
-        print(f'The guess {guess} is about to be returned from the ask loop')
         return guess
 
 def validate_guess(typedin):
@@ -142,24 +136,19 @@ def start_game():
             print(f'Good guess! {guess} is in the word. \n')
             word_letters.remove(guess)
             print(f'These are your guesses so far: {already_guessed} \n')
-            print(f'FOR ME: {len(word_letters)} word_letters remaining \n')
             
         else:
             lives -= 1
             print(f"Too bad. {guess} isn't in the word. \n")
             print(f'These are your guesses so far: {already_guessed} \n')
-            #print(letter for letter in word else '_' for letter)
     
     if lives > 0 and len(word_letters) == 0:
         print("Congratulations! You won!")
 
     if lives == 0 and len(word_letters) > 0:
-        print("Oh, no! You've been hung! Better luck next time.")
+        print(f"Oh, no! You've been hung! The word was {word}. Better luck next time.")
         """
-        Need function to change hangman graphic
-        and decrease player's remaining chances.
-        Inform player of remaining chances.
-        Move function to add to set of guesses into
+        Need function to change hangman graphic. Move function to add to set of guesses into
         this function"
         """
 
