@@ -25,8 +25,7 @@ width = os.get_terminal_size().columns   #credit Marko portfolio 3 project in Gi
 def display_intro():
     title = 'HANGMAN'
     print(title.center(width))    #credit W3Schools for centering text in terminal
-    rules = """Guess all of the letters in a word before you're hung. 
-            For each wrong guess, a new body part will display under the gallows.\n"""
+    rules = "Guess all of the letters in a word before you're hung.\n"
     print(rules.center(width))
 
 def ask_for_player_name():
