@@ -145,8 +145,9 @@ def start_game():
         else:
             lives -= 1
             print(f"Too bad. {guess} isn't in the word. \n")
+            print(gallows[lives])
             if lives > 0:
-                print(f"You have {lives} wrong guess(es) left before you're hung.")
+                print(f"You have {lives} wrong guess(es) left before you're hung.\n")
                 print(f'These are your guesses so far: {already_guessed}')
     
     if lives > 0 and len(word_letters) == 0:

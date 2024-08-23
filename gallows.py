@@ -9,9 +9,10 @@ gallows = {
         |  /       |
         | /
         |/
-        |                The gallows await
+        |                The gallows await!
        _|_
     __|_|_|__________
+    \n
 
     """,
     5:
@@ -20,9 +21,10 @@ gallows = {
         |  /       |
         | /        O
         |/
-        |               Oh, no! Your head
-       _|_              is hanging :(
+        |               Oh, no! You've lost your head!
+       _|_
     __|_|_|__________
+    \n
 
     """,
     4:
@@ -32,8 +34,9 @@ gallows = {
         | /        O
         |/         |
         |
-       _|_              Yikes! The body, too!
+       _|_              Yikes! Your torso, too!
     __|_|_|__________
+    \n
 
     """,
     3:
@@ -45,6 +48,7 @@ gallows = {
         |
        _|_               One arm gone!
     __|_|_|__________
+    \n
 
     """,
     2:
@@ -56,6 +60,7 @@ gallows = {
         |                There goes the other arm!
        _|_
     __|_|_|__________
+    \n
 
     """,
     1:
@@ -67,6 +72,7 @@ gallows = {
         |         /     Egads!
        _|_
     __|_|_|__________   Guess correctly, or you'll be a goner!
+    \n
 
     """,
     0:
