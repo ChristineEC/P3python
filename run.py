@@ -17,27 +17,31 @@ SHEET = GSPREAD_CLIENT.open('words')
 words = SHEET.worksheet('unfiltered')
 
 data = words.get_all_values()
-words_list = sum(data, [])          #words_list is global var
-already_guessed = set()             #global variable
+words_list = sum(data, [])          # words_list is global var
+already_guessed = set()             # global variable
 width = os.get_terminal_size().columns
-#clear = lambda:os.system('cls')
+# clear = lambda:os.system('cls')
 
 
-def clear():                   #See credits in README
+def clear():                      # see credits in readme file
     """
     Function to clear unneeded text from the terminal throughout the game.
     """
     os.system("cls" if os.name == "nt" else "clear")
 
+
 def display_intro():
-    title = 'HANGMAN'
-    print(title.center(width))    #credit W3Schools for centering text in terminal
+
+    title = 'HANGMAN\n'
+    print(title.center(width))
     rules = "Guess all of the letters in a word before you're hung.\n"
     print(rules.center(width))
 
+
 def ask_for_player_name():
+
     """
-    Asks player to input name. Calls function to validates that name 
+    Asks player to input name. Calls function to validates that name
     is alpha only and greets player, else prompts for valid entry.
     """
     while True:
@@ -46,12 +50,14 @@ def ask_for_player_name():
             clear()
             welcome_message = f'Hello, {name}! Welcome to Hangman! \n'
             print(welcome_message.center(width))
+            print(gallows[6])
             break
     return name
 
+
 def validate_user_name_as_alpha(nentry):
     """
-    Checks whether user has input a name using only letters A-Z. 
+    Checks whether user has input a name using only letters A-Z.
     If not, raises error, informs player of reasons, invites
     player to try again.
     """
@@ -59,11 +65,12 @@ def validate_user_name_as_alpha(nentry):
         if not nentry.isalpha():
             raise TypeError(
                 f'Name must consist of letters A-Z only.'
-            )#
+            )
     except TypeError as e:
         print(f'Invalid entry: {e} Please try again.')
         return False
     return True
+
 
 def get_word():
     """
@@ -78,9 +85,10 @@ def get_word():
     print(f'The word is: {word}. (Do not forget to remove this!\n')
     return word
 
+
 def display_underscores(word):
     """
-    Gets the number of letters in the randomly chosen word, initially 
+    Gets the number of letters in the randomly chosen word, initially
     prints out an equal number of underscores. Tells player length of the word.
     Throughout play, prints correctly guessed letters and remaining underscores
     in the proper places.
@@ -94,16 +102,22 @@ def display_underscores(word):
     else:
         for letter in word:
             if letter in already_guessed:
-                print(letter, end = ' ')
-            else: print('_', end= ' ') #got this method from a youtube video. need to credit if not removed later
+                print(letter, end=' ')
+            else:
+                """
+                Below from a youtube video. Credit in readme.
+                """
+                print('_', end=' ')
     print('\n')
+
 
 def ask_for_guess():
     """
-    Asks player to guess a letter. Calls functions to validate input as a new single letter
-    and continues to ask for a new letter input. Returns a valid guess.
+    Asks player to guess a letter. Calls functions
+    to validate input as a new single-letter guess.
+    Continues until valid input received, returns guess.
     """
-    global already_guessed  
+    global already_guessed
     while True:
         guess = input("Enter a letter: \n").upper()
         if not validate_guess(guess):
@@ -113,21 +127,24 @@ def ask_for_guess():
         already_guessed.add(guess)
         return guess
 
+
 def validate_guess(typedin):
     """
-    Checks whether user has input a single letter. If not, raises the relevant error 
-    and continues to ask for valid input until received.
+    Checks whether user has input a single letter, else
+    raises the relevant error and continues to ask
+    for valid input until received.
     """
     alphabet = set(string.ascii_uppercase)
     try:
-        if not typedin in alphabet:
+        if typedin not in alphabet:
             raise TypeError(
                 f'Guess should be a single letter. You typed {typedin}.'
             )
     except (TypeError) as e:
-        print(f'Invalid guess: {e} Please try again.') 
+        print(f'Invalid guess: {e} Please try again.')
         return False
     return True
+
 
 def check_if_already_guessed(ltr):
     global already_guessed
@@ -139,6 +156,7 @@ def check_if_already_guessed(ltr):
     except ValueError as e:
         print(f'{e} Try a different guess.')
         return True
+
 
 def start_game():
     word = get_word()
@@ -156,32 +174,30 @@ def start_game():
                 guesses = ' '.join(guesses_list)
                 print(guesses)
                 print(f'These are your guesses so far: {guesses} \n')
-            
         else:
             lives -= 1
             print(f"Too bad. {guess} isn't in the word. \n")
             print(gallows[lives])
             if lives > 0:
-                print(f"You have {lives} wrong guess(es) left before you're hung.\n")
+                print(f"You have {lives} wrong guess(es) "
+                      "left before you're hung.\n"
+                      )
                 guesses_list = list(already_guessed)
                 guesses_list.sort()
                 guesses = ' '.join(guesses_list)
                 print(f'These are your guesses so far: {guesses} \n')
-    
     if lives > 0 and len(word_letters) == 0:
         for letter in word:
-            print(letter, end = ' ')
-        print("Congratulations! You won!")
-
+            print(letter, end=' ')
+        print('Congratulations! You won!')
     if lives == 0 and len(word_letters) > 0:
         print(f"Game over. The word was {word}. Better luck next time.")
-      
+
 
 def main():
 
     display_intro()
     ask_for_player_name()
-    print(gallows[6])
     start_game()
 
 
