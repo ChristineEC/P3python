@@ -19,7 +19,8 @@ words = SHEET.worksheet('unfiltered')
 data = words.get_all_values()
 words_list = sum(data, [])          #words_list is global var
 already_guessed = set()             #global variable
-width = os.get_terminal_size().columns   #credit Marko portfolio 3 project in GitHub for this piece of code
+width = os.get_terminal_size().columns
+#clear = lambda:os.system('cls')
 
 
 def display_intro():
@@ -51,7 +52,7 @@ def validate_user_name_as_alpha(nentry):
         if not nentry.isalpha():
             raise TypeError(
                 f'Name must consist of letters A-Z only.'
-            )
+            )#
     except TypeError as e:
         print(f'Invalid entry: {e} Please try again.')
         return False
