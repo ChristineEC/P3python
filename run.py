@@ -23,6 +23,12 @@ width = os.get_terminal_size().columns
 #clear = lambda:os.system('cls')
 
 
+def clear():                   #See credits in README
+    """
+    Function to clear unneeded text from the terminal throughout the game.
+    """
+    os.system("cls" if os.name == "nt" else "clear")
+
 def display_intro():
     title = 'HANGMAN'
     print(title.center(width))    #credit W3Schools for centering text in terminal
@@ -37,6 +43,7 @@ def ask_for_player_name():
     while True:
         name = input('Please enter your name: \n')
         if validate_user_name_as_alpha(name):
+            clear()
             welcome_message = f'Hello, {name}! Welcome to Hangman! \n'
             print(welcome_message.center(width))
             break
@@ -133,8 +140,8 @@ def start_game():
     word = get_word()
     lives = 6
     word_letters = set(word)
+    display_underscores(word)
     while lives > 0 and len(word_letters) > 0:
-        display_underscores(word)
         guess = ask_for_guess()
         if guess in word_letters:
             print(f'Good guess! {guess} is in the word. \n')
@@ -162,8 +169,8 @@ def start_game():
 
 def main(): 
     display_intro()
-    print(gallows[6])
     ask_for_player_name()
+    print(gallows[6])
     start_game()
 
 
