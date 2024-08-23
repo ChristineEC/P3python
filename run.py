@@ -75,24 +75,28 @@ def get_word():
     while " " in word or "-" in word or len(word) < 4:
         word = random.choice(words_list)
     word = word.upper()
-    print(f'The word is: {word} \n')
+    print(f'The word is: {word}. (Do not forget to remove this!\n')
     return word
-
-#def display_hangman()
 
 def display_underscores(word):
     """
-    Gets the number of letters in the randomly chosen word, prints out 
-    an equal number of underscores. Tells player the length of the word.
+    Gets the number of letters in the randomly chosen word, initially 
+    prints out an equal number of underscores. Tells player length of the word.
+    Throughout play, prints correctly guessed letters and remaining underscores
+    in the proper places.
     """
     global already_guessed
     word_length = len(word)
-    print(f'\nThe word length is {word_length} letters.')
-    for letter in word:
-        if letter in already_guessed:
-            print(letter, end = ' ')
-        else: print("_", end= " ") #got this method from a youtube video. need to credit if not removed later
-    print("\n")
+    if len(already_guessed) == 0:
+        for letter in word:
+            print('_', end=' ')
+        print(f'The word length is {word_length} letters. \n')
+    else:
+        for letter in word:
+            if letter in already_guessed:
+                print(letter, end = ' ')
+            else: print('_', end= ' ') #got this method from a youtube video. need to credit if not removed later
+    print('\n')
 
 def ask_for_guess():
     """
@@ -140,8 +144,8 @@ def start_game():
     word = get_word()
     lives = 6
     word_letters = set(word)
-    display_underscores(word)
     while lives > 0 and len(word_letters) > 0:
+        display_underscores(word)
         guess = ask_for_guess()
         if guess in word_letters:
             print(f'Good guess! {guess} is in the word. \n')
@@ -158,6 +162,8 @@ def start_game():
                 print(f'These are your guesses so far: {already_guessed}')
     
     if lives > 0 and len(word_letters) == 0:
+        for letter in word:
+            print(letter, end = ' ')
         print("Congratulations! You won!")
 
     if lives == 0 and len(word_letters) > 0:
