@@ -189,7 +189,8 @@ def start_game():
     if lives > 0 and len(word_letters) == 0:
         for letter in word:
             print(letter, end=' ')
-        print('Congratulations! You won!')
+        print('\nCongratulations! You won!\n')
+        print(gallows[-1])
     if lives == 0 and len(word_letters) > 0:
         print(f"Game over. The word was {word}. Better luck next time.")
 
