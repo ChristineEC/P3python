@@ -174,13 +174,11 @@ def start_game():
         print("Congratulations! You won!")
 
     if lives == 0 and len(word_letters) > 0:
-        print(f"Oh, no! You've been hung! The word was {word}. Better luck next time.")
-        """
-        Need function to change hangman graphic. Move function to add to set of guesses into
-        this function"
-        """
+        print(f"Game over. The word was {word}. Better luck next time.")
+      
 
-def main(): 
+def main():
+
     display_intro()
     ask_for_player_name()
     print(gallows[6])

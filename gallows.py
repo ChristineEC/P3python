@@ -81,9 +81,9 @@ gallows = {
         |  /       |
         | /        O
         |/        /|L
-        |         / L     Game over! You've been hung :(
+        |         / L     Oh, no! You've been hung!
        _|_
-    __|_|_|__________     Better luck next time!
+    __|_|_|__________
 
     """,
    
