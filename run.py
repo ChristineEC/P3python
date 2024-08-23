@@ -1,6 +1,7 @@
 import random
 import gspread
 import string
+import os
 from google.oauth2.service_account import Credentials
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -17,12 +18,15 @@ words = SHEET.worksheet('unfiltered')
 data = words.get_all_values()
 words_list = sum(data, [])          #words_list is global var
 already_guessed = set()             #global variable
+width = os.get_terminal_size().columns   #credit Marko portfolio 3 project in GitHub for this piece of code
 
 
 def display_intro():
-    print('HANGMAN')
-    print('-------')
-    print("""RULES\nGuess all of the letters in a word before you're hung. \n""")
+    title = 'HANGMAN'
+    print(title.center(width))    #credit W3Schools for centering text in terminal
+    rules = """Guess all of the letters in a word before you're hung. 
+            For each wrong guess, a new body part will display under the gallows.\n"""
+    print(rules.center(width))
 
 def ask_for_player_name():
     """
@@ -32,7 +36,8 @@ def ask_for_player_name():
     while True:
         name = input('Please enter your name: \n')
         if validate_user_name_as_alpha(name):
-            print(f'Hello, {name}! Welcome to Hangman! \n')
+            welcome_message = f'Hello, {name}! Welcome to Hangman! \n'
+            print(welcome_message.center(width))
             break
     return name
 
@@ -133,7 +138,8 @@ def start_game():
         if guess in word_letters:
             print(f'Good guess! {guess} is in the word. \n')
             word_letters.remove(guess)
-            print(f'These are your guesses so far: {already_guessed} \n')
+            if len(word_letters) > 0:
+                print(f'These are your guesses so far: {already_guessed} \n')
             
         else:
             lives -= 1
