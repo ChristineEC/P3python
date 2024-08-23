@@ -1,6 +1,7 @@
 import random
 import gspread
 import string
+from gallows import gallows
 import os
 from google.oauth2.service_account import Credentials
 SCOPE = [
@@ -160,6 +161,7 @@ def start_game():
 
 def main(): 
     display_intro()
+    print(gallows[6])
     ask_for_player_name()
     start_game()
 
