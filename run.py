@@ -158,8 +158,9 @@ def check_if_already_guessed(ltr):
 
 def validate_yesorno(answer):
     """
-    Checks whether user has input 'Y' or 'y' for 'yes'
-    or 'N' or 'n' for 'no', else raises an error and
+    Checks whether user input is 'Y' for 'yes'
+    or 'N' for 'no' (changed to upper at input),
+    else raises an error and
     continues to ask for valid input until received.
     """
     alphabet = set(string.ascii_uppercase)
