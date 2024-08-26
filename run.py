@@ -44,7 +44,7 @@ def ask_for_player_name():
     is alpha only and greets player, else prompts for valid entry.
     """
     while True:
-        name = input('Please enter your name: \n')
+        name = input('Please enter your name: \n').upper()
         if validate_user_name_as_alpha(name):
             clear()
             welcome_message = f'Hello, {name}! Welcome to Hangman! \n'
@@ -216,16 +216,12 @@ def start_game():
     Resets set of guesses to empty set for the next round of play.
     """
     already_guessed = set()
-
-
     while True:
         newgame = input('Enter Y for yes or N for no: \n').upper()
-
         if not validate_yesorno(newgame):
             print(f'this was typed in: {newgame} We have come this far!')
             continue
         print(f'{newgame} is being returned from the while loop')
-
         if validate_yesorno(newgame):
             if newgame == 'Y':
                 print("Great! let's play again!")
@@ -237,10 +233,6 @@ def start_game():
                 exit()
         return False
 
-        
-    
-
-
 
 def main():
 
@@ -248,6 +240,5 @@ def main():
     ask_for_player_name()
     start_game()
     
-
 
 main()
