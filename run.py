@@ -51,7 +51,6 @@ def ask_for_player_name():
             clear()
             welcome_message = f'Hello, {name}! Welcome to Hangman! \n'
             print(welcome_message.center(width))
-            print(gallows[6])
             break
     return name
 
@@ -187,6 +186,7 @@ def start_game():
     lives = 6
     word_letters = set(word)
     global already_guessed
+    print(gallows[6])
     while lives > 0 and len(word_letters) > 0:
         display_underscores(word)
         guess = ask_for_guess()

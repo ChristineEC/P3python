@@ -37,6 +37,8 @@ The empty underscores and the text telling the player how many letters were in t
 
 When the cursor position for player input of a guess was at the bottom of the heroku terminal, it obscured the first underscore of the unguessed word (i.e., in the case where the first letter had not yet been guessed). This was fixed by adding a line space above the user input field.
 
+The script "Running startup command: python3 run.py" remained at the top of the Heroku terminal during game play. To fix this, I call the clear() function to clear it from the terminal once the main function is called.
+
 While testing the code intended to allow the player to start a new game or exit, it was discovered that the guesses from the round before were still contained in the various game variables such that display_underscores function was showing not only blank underscores for the number of letters in the word but also the "correct" placement of letters in the new word taken from the "already guessed" group from the previous game. Here is a screenshot of the issue as it appeared for the player:
 
 ![Screenshot of the bug](<Bug shot.png>)
