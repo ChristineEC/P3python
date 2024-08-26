@@ -97,7 +97,7 @@ def display_underscores(word):
     if len(already_guessed) == 0:
         for letter in word:
             print('_', end=' ')
-        print(f'The word length is {word_length} letters. \n')
+        print(f'\nThe word length is {word_length} letters. \n')
     else:
         for letter in word:
             if letter in already_guessed:
@@ -237,6 +237,7 @@ def start_game():
                 start_game()
                 return False
             elif newgame == 'N':
+                clear()
                 print('Thanks for playing!')
                 print(gallows[-2])
                 return False
