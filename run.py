@@ -179,7 +179,7 @@ def start_game():
     word = get_word()
     lives = 6
     word_letters = set(word)
-    already_guessed = ("")
+    global already_guessed
     while lives > 0 and len(word_letters) > 0:
         display_underscores(word)
         guess = ask_for_guess()
@@ -212,6 +212,11 @@ def start_game():
         print(f"Game over. The word was {word}. Better luck next time!")
     if lives == 0 or len(word_letters) == 0:
         print('Do you want to play again?')
+    """
+    Resets set of guesses to empty set for the next round of play.
+    """
+    already_guessed = set()
+
 
     while True:
         newgame = input('Enter Y for yes or N for no: \n').upper()
