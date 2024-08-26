@@ -30,7 +30,6 @@ def clear():                      # see credits in readme file
 
 
 def display_intro():
-    clear()
     title = 'HANGMAN\n'
     print(title.center(width))
     rules = "Guess all of the letters in a word before you're hung.\n"
@@ -240,6 +239,7 @@ def start_game():
 
 def main():
 
+    clear()
     display_intro()
     ask_for_player_name()
     start_game()
