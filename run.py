@@ -238,6 +238,7 @@ def start_game():
                 return False
             elif newgame == 'N':
                 print('Thanks for playing!')
+                print(gallows[-2])
                 return False
                 exit()
         return False

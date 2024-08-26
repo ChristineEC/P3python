@@ -39,6 +39,8 @@ When the cursor position for player input of a guess was at the bottom of the he
 
 The script "Running startup command: python3 run.py" remained at the top of the Heroku terminal during game play. To fix this, I call the clear() function to clear it from the terminal once the main function is called.
 
+When the player chose to play another round of the game, the empty gallows were not printed and the game simply displayed the word length and asked for a guess, yielding poor user experience. To improve user experience in this respect, the print statement for printing the empty gallows was moved to the beginning of the main game loop and deleted from the earlier function asking for the player's name. This made it so that the player would still see the gallows immediately after entering their name but would now also see the empty gallows at the beginning of a new game.
+
 While testing the code intended to allow the player to start a new game or exit, it was discovered that the guesses from the round before were still contained in the various game variables such that display_underscores function was showing not only blank underscores for the number of letters in the word but also the "correct" placement of letters in the new word taken from the "already guessed" group from the previous game. Here is a screenshot of the issue as it appeared for the player:
 
 ![Screenshot of the bug](<Bug shot.png>)

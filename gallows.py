@@ -12,20 +12,16 @@ gallows = {
         |                The gallows await!
        _|_
     __|_|_|__________
-    \n
-
     """,
     5:
     """
         ____________
         |  /       |
         | /        O
-        |/
-        |               Oh, no! You've lost your head!
+        |/              Oh, no!
+        |                 You've lost your head!
        _|_
     __|_|_|__________
-    \n
-
     """,
     4:
     """
@@ -33,11 +29,9 @@ gallows = {
         |  /       |
         | /        O
         |/         |
-        |
-       _|_              Yikes! Your torso, too!
+        |               Yikes!
+       _|_                Your torso, too!
     __|_|_|__________
-    \n
-
     """,
     3:
     """
@@ -45,11 +39,9 @@ gallows = {
         |  /       |
         | /        O
         |/        /|
-        |
-       _|_               One arm gone!
+        |                One arm gone!
+       _|_
     __|_|_|__________
-    \n
-
     """,
     2:
     """
@@ -57,41 +49,45 @@ gallows = {
         |  /       |
         | /        O
         |/        /|L
-        |                There goes the other arm!
+        |               There goes the other arm!
        _|_
     __|_|_|__________
-    \n
-
     """,
     1:
     """
         ____________
         |  /       |
         | /        O
-        |/        /|L
-        |         /     Egads!
-       _|_
-    __|_|_|__________   Guess correctly, or you'll be a goner!
-    \n
-
+        |/        /|L     Egads!
+        |         /         Careful, you'll
+       _|_                    soon be a goner!  
+    __|_|_|__________   
     """,
     0:
     """
         ____________
         |  /       |
         | /        O
-        |/        /|L
-        |         / L     Oh, no! You've been hung!
+        |/        /|L     Oh, no!
+        |         / L       You've been HUNG!
        _|_
     __|_|_|__________
-
     """,
     -1:
     """ 
 
-        O
-       /|L        You walk free!
-       /L
-
-   """
+             O
+            /|L        You walk free!
+            /L
+   """,
+   -2:
+    """ 
+        ___________
+        |  /      |
+        | /                     Come back to 
+        |/                        play again soon!
+        |               O 
+       _|_             /|L
+    __|_|_|__________  / L
+   """,
 }
