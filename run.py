@@ -172,6 +172,7 @@ def validate_yesorno(answer):
         print(f'Invalid answer: {e} Please try again.')
         return False
     return True
+        
 
 
 def start_game():
@@ -211,20 +212,19 @@ def start_game():
     if lives == 0 or len(word_letters) == 0:
         print('Do you want to play again?')
 
-        while True:
-            newgame = input('Enter Y for yes or N for no: \n').upper()
-            if not validate_yesorno(newgame):
-                return True
-            print(newgame)
-            print('we have come this far')
-            return newgame
-
-        if newgame == 'Y':
+    while True:
+        newgame = input('Enter Y for yes or N for no: \n').upper()
+        if not validate_yesorno(newgame):
+            print(f'this was typed in: {newgame} We have come this far!')
+            continue
+        return newgame
+        
+    if newgame == 'Y':
             print('player chose to play again')
             print("great! let's play again!")
             start_game()
-        if newgame == 'N':
-            print('Thanks for playing!')
+    else:
+        print('Thanks for playing!')
 
 
 
