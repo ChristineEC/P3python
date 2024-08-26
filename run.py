@@ -179,6 +179,7 @@ def start_game():
     word = get_word()
     lives = 6
     word_letters = set(word)
+    already_guessed = ("")
     while lives > 0 and len(word_letters) > 0:
         display_underscores(word)
         guess = ask_for_guess()
@@ -229,6 +230,7 @@ def start_game():
                 print('Thanks for playing!')
                 return False
                 exit()
+        return False
 
         
     
