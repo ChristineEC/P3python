@@ -233,6 +233,7 @@ def start_game():
         if validate_yesorno(newgame):
             if newgame == 'Y':
                 print("Great! let's play again!")
+                clear()
                 start_game()
                 return False
             elif newgame == 'N':
