@@ -30,7 +30,7 @@ def clear():                      # see credits in readme file
 
 
 def display_intro():
-
+    clear()
     title = 'HANGMAN\n'
     print(title.center(width))
     rules = "Guess all of the letters in a word before you're hung.\n"
@@ -216,6 +216,10 @@ def start_game():
     Resets set of guesses to empty set for the next round of play.
     """
     already_guessed = set()
+
+    """
+    Allows player to choose whether to play again or exit.
+    """
     while True:
         newgame = input('Enter Y for yes or N for no: \n').upper()
         if not validate_yesorno(newgame):
