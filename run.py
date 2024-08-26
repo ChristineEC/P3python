@@ -19,10 +19,10 @@ words = SHEET.worksheet('unfiltered')
 data = words.get_all_values()
 words_list = sum(data, [])          # words_list is global var
 already_guessed = set()             # global variable
-width = os.get_terminal_size().columns
+width = os.get_terminal_size().columns #see credit in README
 
 
-def clear():                      # see credits in readme file
+def clear():                      # see credit in readme file
     """
     Function to clear unneeded text from the terminal throughout the game.
     """
@@ -30,6 +30,9 @@ def clear():                      # see credits in readme file
 
 
 def display_intro():
+    """
+    Displays game title and rules.
+    """
     title = 'HANGMAN\n'
     print(title.center(width))
     rules = "Guess all of the letters in a word before you're hung.\n"
@@ -80,7 +83,6 @@ def get_word():
     while " " in word or "-" in word or len(word) < 4:
         word = random.choice(words_list)
     word = word.upper()
-    print(f'The word is: {word}. (Do not forget to remove this!\n')
     return word
 
 
@@ -106,7 +108,6 @@ def display_underscores(word):
                 Below from a youtube video. Credit in readme.
                 """
                 print('_', end=' ')
-    print('\n')
 
 
 def ask_for_guess():
@@ -145,6 +146,12 @@ def validate_ltrinput(typedin):
 
 
 def check_if_already_guessed(ltr):
+    """
+    Checks if user guess is already in set of guessed
+    letters. If so, raises an error, informs user that
+    they've already guessed the letter, and returns boolean
+    value for the while loop in function where it is called.
+    """
     global already_guessed
     try:
         if ltr in already_guessed:
@@ -155,21 +162,21 @@ def check_if_already_guessed(ltr):
         print(f'{e} Try a different guess.')
         return True
 
+
 def validate_yesorno(answer):
     """
-    Checks whether user input is 'Y' for 'yes'
-    or 'N' for 'no' (changed to upper at input),
-    else raises an error and
+    Checks whether user input is 'Y' for 'yes' or 'N' for 'no'
+    (changed to upper at input), else raises an error and
     continues to ask for valid input until received.
     """
     alphabet = set(string.ascii_uppercase)
     try:
         if answer not in alphabet or answer not in ('N', 'Y'):
             raise TypeError(
-                f'Please type Y for yes or N for no. You typed {answer}.'
+                f'You typed {answer}. Please type Y or N.'
             )
     except (TypeError) as e:
-        print(f'Invalid answer: {e} Please try again.')
+        print(f'Invalid answer: {e}')
         return False
     return True
         
@@ -215,16 +222,14 @@ def start_game():
     Resets set of guesses to empty set for the next round of play.
     """
     already_guessed = set()
-
     """
     Allows player to choose whether to play again or exit.
     """
     while True:
         newgame = input('Enter Y for yes or N for no: \n').upper()
         if not validate_yesorno(newgame):
-            print(f'this was typed in: {newgame} We have come this far!')
+            print('Choice of replay not validated.')
             continue
-        print(f'{newgame} is being returned from the while loop')
         if validate_yesorno(newgame):
             if newgame == 'Y':
                 print("Great! let's play again!")
