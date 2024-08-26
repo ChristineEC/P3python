@@ -164,7 +164,7 @@ def validate_yesorno(answer):
     """
     alphabet = set(string.ascii_uppercase)
     try:
-        if answer not in alphabet or answer not in ('n', 'N', 'y', 'Y'):
+        if answer not in alphabet or answer not in ('N', 'Y'):
             raise TypeError(
                 f'Please type Y for yes or N for no. You typed {answer}.'
             )
@@ -173,7 +173,6 @@ def validate_yesorno(answer):
         return False
     return True
         
-
 
 def start_game():
     word = get_word()
@@ -214,18 +213,24 @@ def start_game():
 
     while True:
         newgame = input('Enter Y for yes or N for no: \n').upper()
+
         if not validate_yesorno(newgame):
             print(f'this was typed in: {newgame} We have come this far!')
             continue
-        return newgame
-        
-    if newgame == 'Y':
-            print('player chose to play again')
-            print("great! let's play again!")
-            start_game()
-    else:
-        print('Thanks for playing!')
+        print(f'{newgame} is being returned from the while loop')
 
+        if validate_yesorno(newgame):
+            if newgame == 'Y':
+                print("Great! let's play again!")
+                start_game()
+                return False
+            elif newgame == 'N':
+                print('Thanks for playing!')
+                return False
+                exit()
+
+        
+    
 
 
 
@@ -234,6 +239,7 @@ def main():
     display_intro()
     ask_for_player_name()
     start_game()
+    
 
 
 main()
