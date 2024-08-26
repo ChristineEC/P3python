@@ -108,6 +108,7 @@ def display_underscores(word):
                 Below from a youtube video. Credit in readme.
                 """
                 print('_', end=' ')
+    print('\n')
 
 
 def ask_for_guess():
@@ -228,7 +229,6 @@ def start_game():
     while True:
         newgame = input('Enter Y for yes or N for no: \n').upper()
         if not validate_yesorno(newgame):
-            print('Choice of replay not validated.')
             continue
         if validate_yesorno(newgame):
             if newgame == 'Y':
