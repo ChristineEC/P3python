@@ -37,17 +37,17 @@ def display_intro():
     print('\n')
     print(title.center(width))
     rules = """
-            _________
-            | /                    The gallows await!
-            | 
-            |         Guess all of the letters in a word before you're hung
-            |           Each wrong guess brings you closer to hanging from
-           _|_            the gallows. All of the words are in the English
-        __|_|_|______       language and contain only letters A through Z
-                              in the English alphabet.
-                                   Good luck!
+         ________
+         | /                  The gallows await!
+         | 
+         |         Guess all of the letters in a word before you're hung
+         |           Each wrong guess brings you closer to hanging from
+        _|_            the gallows. All of the words are in the English
+     __|_|_|______       language and contain only letters A through Z
+                          in the English alphabet.
+                                 Good luck!
 
-            """
+    """
     print(rules.center(width))
 
 
