@@ -4,7 +4,44 @@ Hangman is a python terminal game played in Code Institute's mock terminal in He
 ## How to play the game
 The player must guess all of the letters of a word of a given length, chosen at random, before a complete stick-figure body appears below the gallows. Each wrong guess adds a new body part. Each correct guess is displayed in its proper place, with underscores to represent any letters as-yet unguessed. If the player guesses all of the letters, that is, the whole word, before they're hung, they win. Otherwise, well,they're hung and they lose. Either way, they can play again and again, to their heart's delight. In this version, win or lose, when they quit the game, they walk away in one piece with a friendly goodbye.
 
+### UX
+### Program goals
+
+
+### User stories
+As a user, I want at the start
+- to see the title of the game,
+- to be given clear, concise rules and playing instructions, and
+- to see a simple graphic representation of the game.
+
+I then want
+- to be able to enter my name to receive a friendly, personalized greeting,
+- and to be told exactly what I need to do to start the game.
+
+Throughout play, I want
+- to be told exactly what kind of input I need to give,
+- to be informed when I've given invalid input and what that input was,
+- to be given the chance to give new, valid input,
+- to have my input repeated back to me, so I know the game is working,
+- to be told when I've made a good move or a wrong move,
+- to see, both in written and graphic form, the results of my move, and
+- to be kept up to date on the progress of the game in terms of what I've guessed so far, both right and wrong, and how many wrong guesses I have left before I lose or how many letters I have left to guess before I win.
+
+Finally, I want
+- to be told when the game is over and if I've won or lost,
+- to see the whole word displayed at the end of the game, win or lose,
+- to be invited to play again or quit, and
+- and to be able to play again or receive a friendly goodbye.
+
+I also want an uncluttered terminal and fun but simple (not overwhelming) graphics to keep me interested.
+
+### Developer
+As a developer, I want to provide a simple and easy-to-play game that nevertheless provides a new challenge each play. For this reason, I chose to use a list of nearly 3000 words.
+
+I also want to be able to develop the game further, and to this end, for example, I used a google API to import words from a google sheet which can be further modified with columns sorting the currently unsorted list into new columns in any number of ways, such as by word length, word difficulty, words with x's and z's, various themes, etc.
+
 ## Features
+Immediately upon running, the program removes the default text at the top of the terminal, as it is not part of the game:
 
 
 
