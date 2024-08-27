@@ -2,7 +2,10 @@
 Hangman is a python terminal game played in Code Institute's mock terminal in Heroku. 
 
 ## How to play the game
-The player must guess all of the letters of a word of a given length, chosen at random, before a complete stick-figure body appears below the gallows. Each wrong guess adds a new body part. Each correct guess is displayed in its proper place, with underscores to represent any letters as-yet unguessed. If the player guesses all of the letters, that is, the whole word, before they're hung, they win. Otherwise, well,they're hung and they lose. Either way, they can play again and again, to their heart's delight. In this version, win or lose, when they quit the game, they walk away in one piece with a friendly goodbye.
+The player must guess all of the letters of a word of a given length, chosen at random, before a complete stick-figure body appears below the gallows. Each wrong guess adds a new body part. Each correct guess is displayed in its proper place, with underscores to represent any letters as-yet unguessed. If the player guesses all of the letters, that is, the whole word, before they're hung, they win. Otherwise, well, they're hung and they lose. Either way, they can play again and again, to their heart's delight. In this version, win or lose, when they quit the game, they walk away in one piece with a friendly goodbye.
+
+## Design
+The design of the game was kept purposefully simple. As a lover of word games, I don't like to be distracted by a lot of busy graphics. I considered adding some ascii art or ascii word art to the project, but I personally find some of it to be so visually overwhelming as to cause atual discomfort, so I chose to cater to those with similar tastes to mine. (That said, I think that the addition of color would be beneficial to the user experience in a new iteration.) One aspect of the design I did feel was important, though, was the hangman art. While the hangman art I created is simple, I feel that the humorous messages that accompany each hangman state definitely enhance the user experience. I also chose to program out the possibility of the game using words of length less than four. I just think there is something inherently boring and pointless and frustrating about playing hangman with a three letter word. Just ask Kay, our facilitator. She had 10 tries in the game she showed us and still didn't guess the word!
 
 ## User experience
 
@@ -24,7 +27,7 @@ Throughout play, I want
 - to be told if I've made a duplicate guess and given the chance to guess again,
 - to be told when I've made a good move or a wrong move,
 - to see, both in written and graphic form, the results of my move, and
-- to be kept up to date on the progress of the game in terms of what I've guessed so far, both right and wrong, and how many wrong guesses I have left before I lose or how many letters I have left to guess before I win.
+- to be kept up to date on the progress of the game in terms of what I've guessed so far, both right and wrong, and how many wrong guesses I have left before I lose or how many unguessed letters there are left in word.
 
 Finally, I want
 - to be told when the game is over and if I've won or lost,
@@ -32,12 +35,12 @@ Finally, I want
 - to be invited to play again or quit, and
 - and to be able to play again or receive a friendly goodbye.
 
-I also want an uncluttered terminal and fun but simple (not overwhelming) graphics to keep me interested.
+I also want an uncluttered terminal and fun but simple (not overwhelming) graphics to keep me interested and in good spirits.
 
 ### Developer objectives
 As a developer, I want to provide a simple and easy-to-play game that nevertheless provides a new challenge each play. For this reason, I chose to use a list of nearly 3000 words.
 
-I also want to be able to develop the game further, and to this end, for example, I used a google API to import words from a google sheet which can be further modified with columns sorting the currently unsorted list into new columns in any number of ways, such as by word length, word difficulty, words with x's and z's, various themes, etc.
+I also want to be able to develop the game further, and to this end, for example, I used a google API to import words from a google sheet which can be further modified by sorting the currently unsorted list into new columns in any number of ways, such as by word length, word difficulty, words with x's and z's, or by various themes.
 
 ## Features
 A few seconds after the app is opened in Heroku, the hangman program removes the default text at the top of the terminal, as it is not part of the game:
@@ -57,29 +60,50 @@ After the player enters their name, a new screen appears, welcoming the player b
 ### Validation of user input
 At every step where the user gives input, that input is validated. The user name and user guesses must consist of letters A-Z. The user can only answer Y or N (upper or lower case) to the question of whether they want to play again. If the player types in any other character, more than one character, or no character at all, the game tells the player that they've given invalid input, what that input was, and asks for the input again.
 
-![validname](validname.png)
+![validate name as alphabetic](validname.png)
 
 
-![alt text](validltr.png)
+![validate letter input](validltr.png)
 
 
-![alt text](validyesorno.png)
+![validate yes or no](validyesorno.png)
 
 
 In addition, if a player enters a letter they've already guessed, they are informed and invited to choose again.
 
-![validnewguess](validnew.png)
+![validate new guess](validnew.png)
 
 ### Regular progress through the game
-Each time the player guesses a new letter, the game tells the player whether it was a right or wrong guess and either displays it in the proper place in the word, if it's a correct guess, or displays a new body part hanging from the gallows, if it's an incorrect guess. In addition, the player is shown all of their guesses so far and, for wrong answers, the new state of the gallows. They are also informed of how many wrong guesses they have left until they are hung. They can see in the printed letters-and-underscores representing the word how many letters they still have to guess (though some underscores may represent the same letter occurring in different places, and that is why the program can't tell them verbally how many right guesses they need to win.)
+Each time the player guesses a new letter, the game tells the player whether it was a right or wrong guess and either displays it in the proper place in the word, if it's a correct guess, or displays a new body part hanging from the gallows, if it's an incorrect guess. In addition, the player is shown all of their guesses so far and, for wrong answers, the new state of the gallows. They are also informed of how many wrong guesses they have left until they are hung. They can see in the printed letters-and-underscores representing the word how many letters they still have to guess (though some underscores may represent the same letter occurring in different places, and that is why the program can't tell them the number of right guesses they need to win.)
 
-![gameprogress](gamefeats.png)
+![game progress](gamefeats.png)
 
-Here are some screenshots of the different states of the gallows:
+Here are some screenshots of the different states of the gallows that aren't shown elsewhere in the document:
+
+![head and torso hung](torso.png)
+
+![one arm hung](onearm.png)
+
+![the other arm hung](otherarm.png)
+
+![a leg hung](soongoner.png)
+
+### Game result
+When the player has either guessed all of the letters in the word or run out of body parts to be hung, the game displays the game results and asks the player if they want to play again. The game results look like this:
+
+![Win](win.png)
 
 
+![Lose](lost-1.png)
 
+### Play again
+Once the player finishes a round of hangman, eithr winning or losing, they are asked if they want to play again. If they choose to play again, the main play loop is started again and a start screen appears as follows:
 
+![Play again](playagain.png)
+
+If the player chooses not to play again, a friendly graphic is displayed, showing a person walking away from the gallows in one piece (just in case they lost their last round!), and the player is given a friendly goodbye and thanks for playing:
+
+![Bye, thanks, and come play again soon](byethanks.png)
 
 ## Testing
 ### Manual testing
