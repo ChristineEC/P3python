@@ -121,11 +121,11 @@ The script "Running startup command: python3 run.py" remained at the top of the 
 
 When the player chose to play another round of the game, the empty gallows were not printed and the game simply displayed the word length and asked for a guess, yielding poor user experience. To improve user experience in this respect, the print statement for printing the empty gallows was moved to the beginning of the main game loop and deleted from the earlier function asking for the player's name. This made it so that the player would still see the gallows immediately after entering their name but would now also see the empty gallows at the beginning of a new game.
 
-While testing the code intended to allow the player to start a new game or exit, it was discovered that the guesses from the round before were still contained in the various game variables such that display_underscores function was showing not only blank underscores for the number of letters in the new word but also the "correct" placement of letters in the new word taken from the "already guessed" group from the previous game. Here is a screenshot of the issue as it appeared for the player:
+While testing the code after coding to allow the player to start a new game or exit, it was discovered that the guesses from the round before were still contained in the various game variables such that display_underscores function was showing not only blank underscores for the number of letters in the new word but also the "correct" placement of letters in the new word taken from the "already guessed" group from the previous game.  Here is a screenshot of the issue as it appeared for the player:
 
 ![Screenshot of the bug](<Bug shot.png>)
 
-
+This was fixed by placing the global variable 'already_guessed' at the top of the start_game() function, just before the play loop, and by assigning the variable to an emtpy set at the point in the function after a game is won or lost (that is, after the play loop but still within the start_game() function) and before the player can chose to either play again or quit. 
 
 ### Credits
 
