@@ -78,7 +78,7 @@ gallows = {
 
              O
             /|L        You walk free!
-            /L
+            / L
    """,
    -2:
     """ 

@@ -4,9 +4,7 @@ Hangman is a python terminal game played in Code Institute's mock terminal in He
 ## How to play the game
 The player must guess all of the letters of a word of a given length, chosen at random, before a complete stick-figure body appears below the gallows. Each wrong guess adds a new body part. Each correct guess is displayed in its proper place, with underscores to represent any letters as-yet unguessed. If the player guesses all of the letters, that is, the whole word, before they're hung, they win. Otherwise, well,they're hung and they lose. Either way, they can play again and again, to their heart's delight. In this version, win or lose, when they quit the game, they walk away in one piece with a friendly goodbye.
 
-### UX
-### Program goals
-
+## User experience
 
 ### User stories
 As a user, I want at the start
@@ -23,6 +21,7 @@ Throughout play, I want
 - to be informed when I've given invalid input and what that input was,
 - to be given the chance to give new, valid input,
 - to have my input repeated back to me, so I know the game is working,
+- to be told if I've made a duplicate guess and given the chance to guess again,
 - to be told when I've made a good move or a wrong move,
 - to see, both in written and graphic form, the results of my move, and
 - to be kept up to date on the progress of the game in terms of what I've guessed so far, both right and wrong, and how many wrong guesses I have left before I lose or how many letters I have left to guess before I win.
@@ -35,13 +34,50 @@ Finally, I want
 
 I also want an uncluttered terminal and fun but simple (not overwhelming) graphics to keep me interested.
 
-### Developer
+### Developer objectives
 As a developer, I want to provide a simple and easy-to-play game that nevertheless provides a new challenge each play. For this reason, I chose to use a list of nearly 3000 words.
 
 I also want to be able to develop the game further, and to this end, for example, I used a google API to import words from a google sheet which can be further modified with columns sorting the currently unsorted list into new columns in any number of ways, such as by word length, word difficulty, words with x's and z's, various themes, etc.
 
 ## Features
-Immediately upon running, the program removes the default text at the top of the terminal, as it is not part of the game:
+A few seconds after the app is opened in Heroku, the hangman program removes the default text at the top of the terminal, as it is not part of the game:
+
+![The terminal as it first appears:](terminal.png)
+
+### Game introduction
+The opening screen then appears, showing the title, a game graphic, and the rules and instructions, and inviting the player to start the game by entering their name.
+
+![Intro screen](intro.png)
+
+### Personal greeting and game start
+After the player enters their name, a new screen appears, welcoming the player by name, showing the empty gallows, and telling (and showing with underscores) the player how many letters are in the word they are to guess, then asking the player to enter a letter.
+
+![Welcomeandstart](start.png)
+
+### Validation of user input
+At every step where the user gives input, that input is validated. The user name and user guesses must consist of letters A-Z. The user can only answer Y or N (upper or lower case) to the question of whether they want to play again. If the player types in any other character, more than one character, or no character at all, the game tells the player that they've given invalid input, what that input was, and asks for the input again.
+
+![validname](validname.png)
+
+
+![alt text](validltr.png)
+
+
+![alt text](validyesorno.png)
+
+
+In addition, if a player enters a letter they've already guessed, they are informed and invited to choose again.
+
+![validnewguess](validnew.png)
+
+### Regular progress through the game
+Each time the player guesses a new letter, the game tells the player whether it was a right or wrong guess and either displays it in the proper place in the word, if it's a correct guess, or displays a new body part hanging from the gallows, if it's an incorrect guess. In addition, the player is shown all of their guesses so far and, for wrong answers, the new state of the gallows. They are also informed of how many wrong guesses they have left until they are hung. They can see in the printed letters-and-underscores representing the word how many letters they still have to guess (though some underscores may represent the same letter occurring in different places, and that is why the program can't tell them verbally how many right guesses they need to win.)
+
+![gameprogress](gamefeats.png)
+
+Here are some screenshots of the different states of the gallows:
+
+
 
 
 
