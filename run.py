@@ -1,7 +1,7 @@
 import random
 import gspread
 import string
-from gallows import gallows  # My hangman art dictionary
+from gallows import gallows  # Hangman art dictionary
 import os
 from google.oauth2.service_account import Credentials
 SCOPE = [
@@ -17,14 +17,16 @@ SHEET = GSPREAD_CLIENT.open('words')
 words = SHEET.worksheet('unfiltered')
 
 data = words.get_all_values()
-words_list = sum(data, [])          # words_list is global var
-already_guessed = set()             # global variable
-width = os.get_terminal_size().columns #see credit in README
+words_list = sum(data, [])               # global variable
+already_guessed = set()                  # global variable
+width = os.get_terminal_size().columns   # See credit in README
 
 
-def clear():                      # see credit in readme file
+def clear():
     """
-    Function to clear unneeded text from the terminal throughout the game.
+    Function to clear unneeded text from the terminal during the game.
+    This piece of code, and the idea that it could be used here,
+    was obtained from Code Institute's Marko Tot. See readme file.
     """
     os.system("cls" if os.name == "nt" else "clear")
 
@@ -39,7 +41,7 @@ def display_intro():
     rules = """
          ________
          | /                  The gallows await!
-         | 
+         |
          |         Guess all of the letters in a word before you're hung.
          |           Each wrong guess brings you closer to hanging from
         _|_            the gallows. All of the words are in the English
@@ -191,7 +193,7 @@ def validate_yesorno(answer):
         print(f'Invalid answer: {e}')
         return False
     return True
-        
+
 
 def start_game():
     word = get_word()
@@ -263,6 +265,6 @@ def main():
     display_intro()
     ask_for_player_name()
     start_game()
-    
 
-main() 
+
+main()

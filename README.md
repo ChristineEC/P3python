@@ -1,9 +1,12 @@
 # HANGMAN
-Hangman is a python terminal game. 
+Hangman is a python terminal game played in Code Institute's mock terminal in Heroku. 
 
-## How to play
+## How to play the game
+The player must guess all of the letters of a word of a given length, chosen at random, before a complete stick-figure body appears below the gallows. Each wrong guess adds a new body part. Each correct guess is displayed in its proper place, with underscores to represent any letters as-yet unguessed. If the player guesses all of the letters, that is, the whole word, before they're hung, they win. Otherwise, well,they're hung and they lose. Either way, they can play again and again, to their heart's delight. In this version, win or lose, when they quit the game, they walk away in one piece with a friendly goodbye.
 
 ## Features
+
+
 
 ## Testing
 ### Manual testing
