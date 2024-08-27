@@ -31,11 +31,23 @@ def clear():                      # see credit in readme file
 
 def display_intro():
     """
-    Displays game title and rules.
+    Displays game title, empty gallows, and game rules.
     """
     title = 'HANGMAN\n'
+    print('\n')
     print(title.center(width))
-    rules = "Guess all of the letters in a word before you're hung.\n"
+    rules = """
+            _________
+            | /                    The gallows await!
+            | 
+            |         Guess all of the letters in a word before you're hung
+            |           Each wrong guess brings you closer to hanging from
+           _|_            the gallows. All of the words are in the English
+        __|_|_|______       language and contain only letters A through Z
+                              in the English alphabet.
+                                   Good luck!
+
+            """
     print(rules.center(width))
 
 
@@ -46,7 +58,7 @@ def ask_for_player_name():
     is alpha only and greets player, else prompts for valid entry.
     """
     while True:
-        name = input('Please enter your name: \n').upper()
+        name = input('Enter your name to start the game: \n').upper()
         if validate_user_name_as_alpha(name):
             clear()
             welcome_message = f'Hello, {name}! Welcome to Hangman! \n'
@@ -253,4 +265,4 @@ def main():
     start_game()
     
 
-main()
+main() 
