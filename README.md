@@ -94,7 +94,7 @@ When the player has either guessed all of the letters in the word or run out of 
 ![Win](win.png)
 
 
-![Lose](lost-1.png)
+![Lose](lost.png)
 
 ### Play again
 Once the player finishes a round of hangman, eithr winning or losing, they are asked if they want to play again. If they choose to play again, the main play loop is started again and a start screen appears as follows:
