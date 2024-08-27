@@ -1,7 +1,7 @@
 import random
 import gspread
 import string
-from gallows import gallows
+from gallows import gallows  # My hangman art dictionary
 import os
 from google.oauth2.service_account import Credentials
 SCOPE = [
@@ -40,7 +40,7 @@ def display_intro():
          ________
          | /                  The gallows await!
          | 
-         |         Guess all of the letters in a word before you're hung
+         |         Guess all of the letters in a word before you're hung.
          |           Each wrong guess brings you closer to hanging from
         _|_            the gallows. All of the words are in the English
      __|_|_|______       language and contain only letters A through Z
