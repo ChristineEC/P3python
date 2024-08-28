@@ -47,7 +47,7 @@ def display_intro():
         _|_            the gallows. All of the words are in the English
      __|_|_|______       language and contain only letters A through Z
                           in the English alphabet.
-                                 Good luck!
+                            Good luck!
 
     """
     print(rules.center(width))
@@ -118,7 +118,7 @@ def display_underscores(word):
                 print(letter, end=' ')
             else:
                 """
-                Below from a youtube video. Credit in readme.
+                Code below from a youtube video. Credited in readme.
                 """
                 print('_', end=' ')
     print('\n')
