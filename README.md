@@ -75,65 +75,65 @@ I also want to be able to develop the game further, and to this end, for example
 ## Features
 A few seconds after the app is opened in Heroku, the hangman program removes the default text at the top of the terminal, as it is not part of the game:
 
-![The terminal as it first appears:](assets/terminal.png)
+![The terminal as it first appears:](assets/screenshots/terminal.png)
 
 ### Game introduction <a name="feat-intro"></a>
 The opening screen then appears, showing the title, a game graphic, and the rules and instructions. The player is invited to start the game by entering their name.
 
-![Intro screen](assets/intro.png)
+![Intro screen](assets/screenshots/intro.png)
 
 ### Personal greeting and game start <a name="feat-start"></a>
 After the player enters their name, a new screen appears, welcoming the player by name, showing the empty gallows, telling (and showing with underscores) the player the length of the word they are to guess, and asking the player to enter a letter.
 
-![Welcomeandstart](assets/start.png)
+![Welcomeandstart](assets/screenshots/start.png)
 
 ### Validation of user input
 At every step where the user gives input, that input is validated. The user name and user guesses must consist of letters A-Z. The user can only answer Y or N (upper or lower case) to the question of whether they want to play again. If the player types in any other character, more than one character, or no character at all, the game tells the player that they've given invalid input, what that input was, and asks for the input again until a valid input is received.
 
-![validate name as alphabetic](assets/validname.png)
+![validate name as alphabetic](assets/screenshots/validname.png)
 
 
-![validate letter input](assets/validltr.png)
+![validate letter input](assets/screenshots/validltr.png)
 
 
-![validate yes or no](assets/validyesorno.png)
+![validate yes or no](assets/screenshots/validyesorno.png)
 
 
 In addition, if a player enters a letter they've already guessed, they are informed and invited to choose again.
 
-![validate new guess](assets/validnew.png)
+![validate new guess](assets/screenshots/validnew.png)
 
 ### Game progression
 Each time the player guesses a new letter, the game tells the player whether it was a right or wrong guess and either displays it in the proper place in the word, if it's a correct guess, or displays a new body part hanging from the gallows, if it's an incorrect guess. In addition, the player is shown all of their guesses so far and, for wrong answers, the new state of the gallows. They are also informed of how many wrong guesses they have left until they are hung. They can see in the printed letters-and-underscores representing the word how many letters they still have to guess (though some underscores may represent the same letter occurring in different places, and that is why the program can't tell them the number of right guesses they need to win.)
 
-![game progress](assets/gamefeats.png)
+![game progress](assets/screenshots/gamefeats.png)
 
 Here are some screenshots of the different states of the gallows that aren't shown elsewhere in the document:
 
-![head and torso hung](assets/torso.png)
+![head and torso hung](assets/screenshots/torso.png)
 
-![one arm hung](assets/onearm.png)
+![one arm hung](assets/screenshots/onearm.png)
 
-![the other arm hung](assets/otherarm.png)
+![the other arm hung](assets/screenshots/otherarm.png)
 
-![a leg hung](assets/soongoner.png)
+![a leg hung](assets/screenshots/soongoner.png)
 
 ### Game result
 When the player has either guessed all of the letters in the word or run out of body parts to be hung, the game displays the game results and asks the player if they want to play again. The game results look like this:
 
-![Win](assets/win.png)
+![Win](assets/screenshots/win.png)
 
 
-![Lose](assets/lost.png)
+![Lose](assets/screenshots/lost.png)
 
 ### Play again
 Once the player finishes a round of hangman, eithr winning or losing, they are asked if they want to play again. If they choose to play again, the main play loop is started again and a start screen appears as follows:
 
-![Play again](assets/playagain.png)
+![Play again](assets/screenshots/playagain.png)
 
 If the player chooses not to play again, a friendly graphic is displayed, showing a person walking away from the gallows in one piece (just in case they lost their last round!), and the player is given a friendly goodbye and thanks for playing:
 
-![Bye, thanks, and come play again soon](assets/byethanks.png)
+![Bye, thanks, and come play again soon](assets/screenshots/byethanks.png)
 
 
 ## Libraries
@@ -176,10 +176,11 @@ Testing of the code throughout the development process was enabled by the use of
 
 To make manaual testing more efficient, I often commented out the function for generating a random word and simply set the word variable to a fixed word. I also printed the unguessed word at the beginning of the game during testing to enable me to see that the program was comparing guesses to the word correctly and yielding correct results.
 
-### PEP8 linter
+### PEP8 Python linter
+
+![PEP8 Python linter](assets/screenshots/pep8.png)
 
 ## Bugs
-
 ### Solved bugs
 **Bug:** The empty underscores and the message telling the player how many letters were in the word (i.e., length) kept appearing when it was no longer needed. 
 **Fix:** I recoded so that the terminal would clear that text and not bring it up again after the number of guesses was greater than zero.
@@ -195,9 +196,9 @@ To make manaual testing more efficient, I often commented out the function for g
 
 **Bug:** While testing the code after coding to allow the player to start a new game or exit, it was discovered that the guesses from the round before were still contained in the various game variables such that display_underscores function was showing not only blank underscores for the number of letters in the new word but also the "correct" placement of letters in the new word taken from the "already guessed" group from the previous game.  Here is a screenshot of the issue as it appeared for the player:
 
-![Screenshot of the bug](assets/bugshot.png)
+![Screenshot of the bug](assets/screenshots/bugshot.png)
 
-**Fix:**This was fixed by placing the global variable 'already_guessed' at the top of the start_game() function, just before the play loop, and by assigning the variable to an emtpy set at the point in the function after a game is won or lost (that is, after the play loop but still within the start_game() function) and before the player can chose to either play again or quit.
+**Fix:** This was fixed by placing the global variable 'already_guessed' at the top of the start_game() function, just before the play loop, and by assigning the variable to an emtpy set at the point in the function after a game is won or lost (that is, after the play loop but still within the start_game() function) and before the player can chose to either play again or quit.
 
 ### Unsolved bugs - none
 The developer is not aware of any unsolved bugs after thorough testing described herein.
@@ -212,6 +213,7 @@ Some of the features I would like to develop further for this game are as follow
 
 ## Deployment
 
+
 ## Credits and Acknowledgements
 - Code Institute for teaching me how to code, and specifically for this project, for the Python Essentials module and Love Sandwiches Walkthrough in the LMS.
 
@@ -222,18 +224,20 @@ Some of the features I would like to develop further for this game are as follow
 - I watched most of the 15-hour long [Harvard CS50’s Introduction to Programming with Python – Full University Course](https://www.youtube.com/watch?v=nLRL_NcnK-4) as a supplement to the Python Essentials module and referred back to it frequently for reminders or refreshers about syntax, while loops, and try-except statements.
 
 - When it came time to make the game more user friendly in terms of clearing unnecessary text from the terminal, I remembered that Marko mentioned a method to do this in his README file. I could see that he used an os method involving 'cls', but I wanted to understand it better before using it. 
-    - I found some information on [stack overflow](https://stackoverflow.com/questions/63855637/clearing-the-terminal-for-my-python-text-adventure) and then felt I was ready to use the method. However, when I checked back on Marko's GitHub to compare the syntax used, I noticed that his was different. To understand why, I looked further. 
+    - I found some information on [StackOverflow](https://stackoverflow.com/questions/63855637/clearing-the-terminal-for-my-python-text-adventure) and then felt I was ready to use the method. However, when I checked back on Marko's GitHub to compare the syntax used, I noticed that his was different. To understand why, I looked further. 
     - On [Code360 by Coding Ninjas](https://www.naukri.com/code360/library/how-to-clear-a-screen-in-python) I found the explanation I was looking for and decided to use the code as Marko had written it. Many thanks, Marko, for making this piece of code available to me. I later got the idea to us an os method to get the width of the player's terminal from Marko's hangman game in GitHub, which he so kindly shared with me while I was developing this game. 
     - I combined this with the code I found at [W3Schools](https://www.w3schools.com/python/trypython.asp?filename=demo_ref_string_center2) for centering the game title in the player's terminal. 
     - It was entirely my idea to use the clear command to get rid of that nasty python code at the top of the player terminal.
 
 - I obtained a list of words to use in the game from [Gökhan YAVAŞ](https://github.com/gokhanyavas/Oxford-3000-Word-List), who in turn credits [Oxford Learner's Dictionaries](http://www.oxfordlearnersdictionaries.com/us/wordlist/english/oxford3000/) for a list of 3000 most important words for learners of English, although I weeded out some of the words in the google sheet I copied it to.
 
-- The code for flattening the list of lists obtained from my google sheet (i.e., a list consisting of each word in a separate list) was obtained from StackOverflow (multiple contributors, so difficult to credit any individual).
+- The code `words_list = sum(data, [])` for flattening the list of lists obtained from my google sheet (i.e., a list consisting of each word in a separate list) was obtained from reading numerous entries by different contributors at StackOverflow.
 
 - I made frequent use of [W3Schools](https://www.w3schools.com/) and [Python.org](https://www.python.org/) during development.
 
 - Several YouTube tutorials were of use to me, especially the following:
     - Kylie Ying's [How to Code a Game of Hangman... The EASY Way!!](https://www.youtube.com/watch?v=cJJTnI22IF8)
     - Kite's [How to build HANGMAN with Python in 10 MINUTES](https://www.youtube.com/watch?v=m4nEnsavl6w)
+
+- For deployment instructions I relied on the Love Sandwiches Walkthrough lesson in Code Institute's LMS.
 
