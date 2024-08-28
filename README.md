@@ -138,12 +138,14 @@ If the player chooses not to play again, a friendly graphic is displayed, showin
 
 ## Libraries
 
+
+
 ## Testing and validation
 
 ### Manual testing
 
 #### User input
-User input was validated through the use of try statements and the raising of exceptions. Several examples of these (or the results of these) can be seen in the features section. See [Validation of user input](###user-input).
+User input was validated through the use of try statements and the raising of exceptions. Several examples of these (or the results of these) can be seen in the features section. See [Validation of user input](#validation-of-user-input).
 
 I manually tested user input validation for guesses by typing in
     - a non-alphabetical character
@@ -178,7 +180,10 @@ To make manaual testing more efficient, I often commented out the function for g
 
 ### PEP8 Python linter
 
-![PEP8 Python linter](assets/screenshots/pep8.png)
+Run.py and gallows.py were run through Code Institute's Python linter, both with results "all clear, no errors found."
+
+![PEP8 Python linter for run.py](assets/screenshots/pep8.png)
+![PEP8 Python linter for gallows.py](assets/screenshots/pep8hangart.png)
 
 ## Bugs
 ### Solved bugs

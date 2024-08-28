@@ -60,8 +60,8 @@ gallows = {
         | /        O
         |/        /|L     Egads!
         |         /         Careful, you'll
-       _|_                    soon be a goner!  
-    __|_|_|__________   
+       _|_                    soon be a goner!
+    __|_|_|__________
     """,
     0:
     """
@@ -74,19 +74,19 @@ gallows = {
     __|_|_|__________
     """,
     -1:
-    """ 
+    """
 
              O
             /|L        You walk free!
             / L
    """,
-   -2:
-    """ 
+    -2:
+    """
         ___________
         |  /      |
-        | /                     Come back to 
+        | /                     Come back to
         |/                        play again soon!
-        |               O 
+        |               O
        _|_             /|L
     __|_|_|__________  / L
    """,
