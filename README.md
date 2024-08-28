@@ -23,7 +23,8 @@ Hangman is a Python terminal game played in Code Institute's mock terminal in He
         - [Game progress](#game-progress)
         - [Browser testing](#browser-testing)
         - [Code validation](#code-validation)
-    - [PEP8 linter](#pep8-linter)
+    - [PEP8 Python linter](#pep8-python-linter)
+    - [Lighthouse](#lighthouse)
 - [Bugs](#bugs)
     - [Solved bugs](###solved-bugs)
     - [Unsolved bugs - none](#unsolved-bugs-none)
@@ -137,7 +138,17 @@ If the player chooses not to play again, a friendly graphic is displayed, showin
 
 
 ## Libraries
+ - **random**
+ Random ws needed to enable the choice of a random word.
 
+ - **gspread**
+ This dictionary was needed to be able to access my google worksheet containing the 3000 or so words to be used in the game.
+
+ - **string**
+ This was imported so that I could create a variable alphabet and assign it to `set(string.ascii_uppercase)`, as this was more efficient in places than using the built-in isalpha() method that I was first using.
+
+ - **os**
+ Imported for the purpose of clearing the terminal at certain points in the game and for getting the width of the player's terminal in order to center the title.
 
 
 ## Testing and validation
@@ -170,13 +181,14 @@ The live app was tested in the following browsers and worked as expected.
 - Firefox
 - Microsoft Edge
 - Opera
-There is a known issue with Safari, and it was not possible to bring up the app in that browser.
-
+- There is a known issue with Safari, and it was not possible to bring up the app in that browser.
 
 #### Code validation
 Testing of the code throughout the development process was enabled by the use of print statements in each function, and often between functions, to indicate when the code was running the function and what was being returned. Messages such as "Y is being returned from the while loop" or lines of code such as "print(already_guessed)" or "print(set(word))" were used to determine what was happening with the code at any given point. The print statements were removed only after thorough manual testing of each function.
 
 To make manaual testing more efficient, I often commented out the function for generating a random word and simply set the word variable to a fixed word. I also printed the unguessed word at the beginning of the game during testing to enable me to see that the program was comparing guesses to the word correctly and yielding correct results.
+
+I deployed the project at a very early stage to enable me to perform manual testing on the live app throughout development.
 
 ### PEP8 Python linter
 
@@ -184,6 +196,11 @@ Run.py and gallows.py were run through Code Institute's Python linter, both with
 
 ![PEP8 Python linter for run.py](assets/screenshots/pep8.png)
 ![PEP8 Python linter for gallows.py](assets/screenshots/pep8hangart.png)
+
+### Lighthouse
+The app was tested with Chrome dev tools Lighthouse and passed with the following scores:
+
+![Lighthouse](assets/screenshots/lighthouse.png)
 
 ## Bugs
 ### Solved bugs
@@ -217,6 +234,28 @@ Some of the features I would like to develop further for this game are as follow
 - Other game functionality might include the ability to keep score of wins and losses within the game, or to compare scores between players (with data written to and retrieved from the google sheet).
 
 ## Deployment
+Code Institute provided a template in Git Hub called Python Essentials, which enabled deployment of the project in a mock terminal in Heroku. I deployed the project to Heroku very early in development.
+
+### GitHub and Gitpod
+The initial steps I followed were to 
+- open a new workspace in Git Hub
+- create a repository named [P3python](https://github.com/ChristineEC/P3python) using the Python Essentials template;
+- open GitPod to start setting up files and dependencies;
+- import libraries, including gspread, and add authorization/credentials to access my google worksheet for the words to be used; and finally,
+- start coding.
+
+I saved the code and made frequent commits in Gitpod using the git add and git commit commands, providing descriptive commit messages to enable clear documentation of the development process.
+I pushed the code to GitHub using git push almost as frequently, as I had set up Heroku to automatically deploy (after initial deployment), which enabled me to do manual testing of the live app throughout development.
+
+### Heroku
+Deployment in Heroku involved
+- signing up for Heroku (completed before the project was started)
+- creating a new app
+- in settings, adding two buildpacks, Python and NodeJS (in that order!)
+- allowing Heroku to access GitHub
+- linking the app to my P3python repository in GitHub
+- choosing to enable automatic deployments (the other option was to choose manual deployments, but I opted for automatic), and finally,
+- clicking on Deploy.
 
 
 ## Credits and Acknowledgements
@@ -226,7 +265,7 @@ Some of the features I would like to develop further for this game are as follow
 
 - I also want to thank my mentor, Akshat Garg, for providing invaluable direction for and feedback on the project.
 
-- I watched most of the 15-hour long [Harvard CS50’s Introduction to Programming with Python – Full University Course](https://www.youtube.com/watch?v=nLRL_NcnK-4) as a supplement to the Python Essentials module and referred back to it frequently for reminders or refreshers about syntax, while loops, and try-except statements.
+- I watched most of the 15-hour long [Harvard CS50’s Introduction to Programming with Python – Full University Course](https://www.youtube.com/watch?v=nLRL_NcnK-4) as a supplement to the Python Essentials module and referred back to it frequently for reminders or refreshers about syntax, while loops, ways of iterating over different data types, and try-except statements.
 
 - When it came time to make the game more user friendly in terms of clearing unnecessary text from the terminal, I remembered that Marko mentioned a method to do this in his README file. I could see that he used an os method involving 'cls', but I wanted to understand it better before using it. 
     - I found some information on [StackOverflow](https://stackoverflow.com/questions/63855637/clearing-the-terminal-for-my-python-text-adventure) and then felt I was ready to use the method. However, when I checked back on Marko's GitHub to compare the syntax used, I noticed that his was different. To understand why, I looked further. 
