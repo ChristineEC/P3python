@@ -27,7 +27,7 @@ Hangman is a Python terminal game played in Code Institute's mock terminal in He
     - [Lighthouse](#lighthouse)
 - [Bugs](#bugs)
     - [Solved bugs](###solved-bugs)
-    - [Unsolved bugs - none](#unsolved-bugs-none)
+    - [Unsolved bugs - none known](#unsolved-bugs-none-known)
 - [Future features](#future-features)
 - [Deployment](#deployment)
 - [Credits and Acknowledgements](#credits-and-acknowledgements)
@@ -71,7 +71,7 @@ I also want an uncluttered terminal and fun but simple (not overwhelming) graphi
 ### Developer objectives
 As a developer, I want to provide a simple and easy-to-play game that nevertheless provides a new challenge each play. For this reason, I chose to use a list of nearly 3000 words.
 
-I also want to be able to develop the game further, and to this end, for example, I used a google API to import words from a google sheet which can be further modified by sorting the currently unsorted list into new columns in any number of ways, such as by word length, word difficulty, words with x's and z's, or by various themes.
+I also want to be able to develop the game further, and to this end, for example, I used a google API to be able to access words in a google worksheet, which can be further modified by sorting the currently unsorted list into new columns in any number of ways, such as by word length, word difficulty, words with x's and z's, or by various themes.
 
 ## Features
 A few seconds after the app is opened in Heroku, the hangman program removes the default text at the top of the terminal, as it is not part of the game:
@@ -159,13 +159,14 @@ If the player chooses not to play again, a friendly graphic is displayed, showin
 User input was validated through the use of try statements and the raising of exceptions. Several examples of these (or the results of these) can be seen in the features section. See [Validation of user input](#validation-of-user-input).
 
 I manually tested user input validation for guesses by typing in
-    - a non-alphabetical character
-    - more than one character
-    - nothing
+- a non-alphabetical character
+- more than one character
+- nothing
+
 For user name, I checked whether all characters input were A-Z.
 For player's choice of whether to continue with a new game, I checked for
-    - no input
-    - any input other than 'y' or 'Y' or 'n' or 'N'
+- no input
+- any input other than 'y' or 'Y' or 'n' or 'N'
 
 #### Game progress
 I played the game many, many times in both the terminal and in the deployed version in Heroku to ensure everything worked as expected:
@@ -205,15 +206,19 @@ The app was tested with Chrome dev tools Lighthouse and passed with the followin
 ## Bugs
 ### Solved bugs
 **Bug:** The empty underscores and the message telling the player how many letters were in the word (i.e., length) kept appearing when it was no longer needed. 
+
 **Fix:** I recoded so that the terminal would clear that text and not bring it up again after the number of guesses was greater than zero.
 
 **Bug:** When the cursor position for player input of a guess was at the bottom of the heroku terminal, it obscured the first underscore of the unguessed word (i.e., in the case where the first letter had not yet been guessed). 
+
 **Fix:** This was fixed by adding a line space above code/request for player input.
 
 **Bug:** The script "Running startup command: python3 run.py" remained at the top of the Heroku terminal during game play. 
+
 **Fix:** To fix this, I call the clear() function at the top of the main function to clear it from the player terminal.
 
 **Bug:** When the player chose to play another round of the game, the empty gallows were not printed and the game simply displayed the word length and asked for a guess, yielding poor user experience. 
+
 **Fix:** The print statement for printing the empty gallows was moved to the beginning of the main game loop (from the earlier function asking for the player's name). This had no effect on the first round (for the player) but made it so that they would still see the empty gallows at the beginning of a new game.
 
 **Bug:** While testing the code after coding to allow the player to start a new game or exit, it was discovered that the guesses from the round before were still contained in the various game variables such that display_underscores function was showing not only blank underscores for the number of letters in the new word but also the "correct" placement of letters in the new word taken from the "already guessed" group from the previous game.  Here is a screenshot of the issue as it appeared for the player:
@@ -222,7 +227,7 @@ The app was tested with Chrome dev tools Lighthouse and passed with the followin
 
 **Fix:** This was fixed by placing the global variable 'already_guessed' at the top of the start_game() function, just before the play loop, and by assigning the variable to an emtpy set at the point in the function after a game is won or lost (that is, after the play loop but still within the start_game() function) and before the player can chose to either play again or quit.
 
-### Unsolved bugs - none
+### Unsolved bugs - none known
 The developer is not aware of any unsolved bugs after thorough testing described herein.
 
 ## Future features
