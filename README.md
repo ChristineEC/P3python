@@ -1,6 +1,8 @@
 # HANGMAN <a name="title"></a>
 Hangman is a python terminal game played in Code Institute's mock terminal in Heroku. 
 
+[Link to the deployed app](https://hangman-p3-91321cd944d0.herokuapp.com/)
+
 ## Table of Contents
 - [How to play the game](##how-to-play)
 - [Design](##design)
@@ -14,9 +16,12 @@ Hangman is a python terminal game played in Code Institute's mock terminal in He
     - [Game progression](###game-prog)
     - [Game result](###game-result)
     - [Play again](###play-again)
+- [Libraries](##libraries)
 - [Testing and validation](##testing)
     - [Manual testing](###manual)
         - [User input](####test-user)
+        - [Game progress](####progress)
+        - [Browser testing](####browsers)
         - [Code validation](####test-code)
     - [PEP8 linter](###pep8)
 - [Bugs](##Bugs)
@@ -133,6 +138,8 @@ If the player chooses not to play again, a friendly graphic is displayed, showin
 ![Bye, thanks, and come play again soon](assets/byethanks.png)
 
 
+## Libraries <a name="libraries"></a>
+
 ## Testing and validation <a name="testing"></a>
 
 ### Manual testing <a name="manual"></a>
@@ -140,13 +147,36 @@ If the player chooses not to play again, a friendly graphic is displayed, showin
 #### User input <a name="test-user"></a>
 User input was validated through the use of try statements and the raising of exceptions. Several examples of these (or the results of these) can be seen in the features section. See [Validation of user input](###user-input).
 
+I manually tested user input validation for guesses by typing in
+    - a non-alphabetical character
+    - more than one character
+    - nothing
+For user name, I checked whether all characters input were A-Z.
+For player's choice of whether to continue with a new game, I checked for
+    - no input
+    - any input other than 'y' or 'Y' or 'n' or 'N'
+
+#### Game progress
+I played the game many, many times in both the terminal and in the deployed version in Heroku to ensure everything worked as expected:
+    - Intro and start screens appeared as expected
+    - Player greeted by name
+    - Letters guessed were correctly compared to the word, with expected outcome displayed for the player at each stage of the game
+    - Wins and losses occurred as expected
+    - Play again function worked as expected
+
+#### Browser testing <a name="browsers"></a>
+The live app was tested in the following browsers and worked as expected.
+- Chrome
+- Firefox
+- Microsoft Edge
+- Opera
+There is a known issue with Safari, and it was not possible to bring up the app in that browser.
+
 
 #### Code validation <a name="test-code"></a>
 Testing of the code throughout the development process was enabled by the use of print statements in each function, and often between functions, to indicate when the code was running the function and what was being returned. Messages such as "Y is being returned from the while loop" or lines of code such as "print(already_guessed)" or "print(set(word))" were used to determine what was happening with the code at any given point. The print statements were removed only after thorough manual testing of each function.
 
 To make manaual testing more efficient, I often commented out the function for generating a random word and simply set the word variable to a fixed word. I also printed the unguessed word at the beginning of the game during testing to enable me to see that the program was comparing guesses to the word correctly and yielding correct results.
-
-
 
 ### PEP8 linter <a name="pep8"></a>
 
@@ -180,12 +210,16 @@ Some of the features I would like to develop further for this game are as follow
 
 ## Deployment <a name="deploy"></a>
 
+
+
 ## Credits and Acknowledgements <a name="creds"></a>
 - Code Institute for teaching me how to code, and specifically for this project, for the Python Essentials module and Love Sandwiches Walkthrough in the LMS.
 
 - Many thanks to Code Institute's Marko Tot and Kay Welfare for sharing their hangman projects with me and for their encouragement during weekly standups. 
 
 - I also want to thank my mentor, Akshat Garg, for providing invaluable direction for and feedback on the project.
+
+I also watched most of the 15-hour long [Harvard CS50’s Introduction to Programming with Python – Full University Course](https://www.youtube.com/watch?v=nLRL_NcnK-4) as a supplement to the Python Essentials module and referred back to it frequently for reminders or refreshers about syntax, while loops, and try-except statements.
 
 - When it came time to make the game more user friendly in terms of clearing unnecessary text from the terminal, I remembered that Marko mentioned a method to do this in his README file. I could see that he used an os method involving 'cls', but I wanted to understand it better before using it. I found some information on [stack overflow](https://stackoverflow.com/questions/63855637/clearing-the-terminal-for-my-python-text-adventure) and then felt I was ready to use the method. However, when I checked back on Marko's GitHub to compare the syntax used, I noticed that his was different. To understand why, I looked further. On [Code360 by Coding Ninjas](https://www.naukri.com/code360/library/how-to-clear-a-screen-in-python) I found the explanation I was looking for and decided to use the code as Marko had written it. Many thanks, Marko, for making this piece of code available to me. I later got the idea to us an os method to get the width of the player's terminal from Marko's hangman game in GitHub, which he so kindly shared with me while I was developing this game. I combined this with the code I found at [W3Schools](https://www.w3schools.com/python/trypython.asp?filename=demo_ref_string_center2) for centering the game title in the player's terminal. It was entirely my idea to use the clear command to get rid of that nasty python code at the top of the player terminal.
 
